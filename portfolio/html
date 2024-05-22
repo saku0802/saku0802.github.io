@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mofu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header id="home">
+        <div class="container">
+            <h1>mofu</h1>
+        </div>
+    </header>
+    <section id="about">
+        <div class="container">
+            <h2>ABOUT</h2>
+            <div class="content">
+                <p>mofu is founded by Misaki Nakano,<br>generative artist / programmer.</p>
+                <p>We create beautiful expressions<br>through programming and deliver<br>the best possible experiences.</p>
+            </div>
+        </div>
+    </section>
+    <section id="work">
+        <div class="container">
+            <h2>WORK</h2>
+            <div class="works">
+                <div class="work-item">
+                    <img src="https://via.placeholder.com/600x600.png?text=Work+1" alt="Work 1">
+                    <h3>THE NURSERY</h3>
+                    <p>Generative art NFT blooming with each passing day.</p>
+                </div>
+                <div class="work-item">
+                    <img src="https://via.placeholder.com/600x600.png?text=Work+2" alt="Work 2">
+                    <h3>WONDERLAND</h3>
+                    <p>Main visual is like an art exhibition in a ballet hall.</p>
+                </div>
+                <div class="work-item">
+                    <img src="https://via.placeholder.com/600x600.png?text=Work+3" alt="Work 3">
+                    <h3>Synthetic Gestalt</h3>
+                    <p>The background represents nature and changes as you scroll.</p>
+                </div>
+                <div class="work-item">
+                    <img src="https://via.placeholder.com/600x600.png?text=Work+4" alt="Work 4">
+                    <h3>THE RECRUIT SITE</h3>
+                    <p>The background unfolds like a picture-story show.</p>
+                </div>
+                <div class="work-item">
+                    <img src="https://via.placeholder.com/600x600.png?text=Work+5" alt="Work 5">
+                    <h3>PRIMAVISTA TEXTURE</h3>
+                    <p>Experience the texture of the foundation with liquid simulation.</p>
+                </div>
+                <div class="work-item">
+                    <img src="https://via.placeholder.com/600x600.png?text=Work+6" alt="Work 6">
+                    <h3>DESIGN SCRUMBLE</h3>
+                    <p>Official website of Design Scramble, a design project led by DeNA</p>
+                </div>
+                <div class="work-item">
+                    <img src="https://via.placeholder.com/600x600.png?text=Work+7" alt="Work 7">
+                    <h3>WASO</h3>
+                    <p>Mini-game content for Shiseido's waso cosmetics brand.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer id="contact">
+        <div class="container">
+            <h2>CONTACT</h2>
+            <ul>
+                <li>MAIL: <a href="mailto:hello@mofu-dev.com">hello@mofu-dev.com</a></li>
+                <li>FOUNDER: Misaki Nakano</li>
+                <li>ADDRESS: #942 2-2-15 Minamiaoyama Minato-ku, Tokyo, Japan</li>
+            </ul>
+            <ul class="sns">
+                <li><a href="#">Twitter</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Github</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
