@@ -1,4 +1,0 @@
-window.addEventListener('scroll', function() {
-    let value = window.scrollY;
-    document.getElementById('home').style.backgroundPositionY = value * 0.5 + 'px'; 
-});
