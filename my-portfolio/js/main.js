@@ -1,5 +1,12 @@
 // main.js
 document.addEventListener('DOMContentLoaded', function() {
+  // ロード画面を非表示にする
+  const loading = document.getElementById('loading');
+  loading.style.opacity = '0';
+  setTimeout(function() {
+    loading.style.display = 'none';
+  }, 500);
+
   // スムーズスクロール
   const smoothScrollLinks = document.querySelectorAll('a[href^="#"]');
   smoothScrollLinks.forEach(link => {
@@ -13,5 +20,13 @@ document.addEventListener('DOMContentLoaded', function() {
         behavior: 'smooth'
       });
     });
+  });
+
+  // ハンバーガーメニュー
+  const burger = document.querySelector('.burger');
+  const nav = document.querySelector('nav ul');
+  burger.addEventListener('click', function() {
+    burger.classList.toggle('active');
+    nav.classList.toggle('active');
   });
 });
