@@ -1,13 +1,15 @@
 // main.js
 document.addEventListener('DOMContentLoaded', function() {
-  // Hide loading screen
+  // ロード画面を非表示にする
   const loading = document.getElementById('loading');
-  loading.style.opacity = '0';
   setTimeout(function() {
-    loading.style.display = 'none';
-  }, 500);
+    loading.style.opacity = '0';
+    setTimeout(function() {
+      loading.style.display = 'none';
+    }, 500);
+  }, 1500); // 1.5秒後にロード画面を非表示にする
 
-  // Smooth scrolling
+  // スムーズスクロール
   const smoothScrollLinks = document.querySelectorAll('a[href^="#"]');
   smoothScrollLinks.forEach(link => {
     link.addEventListener('click', function(e) {
@@ -22,8 +24,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Hamburger menu
+  // ハンバーガーメニュー
   const burger = document.querySelector('.burger');
   const nav = document.querySelector('nav ul');
   burger.addEventListener('click', function() {
     burger.classList.toggle('active');
+    nav.classList.toggle('active');
+  });
+});
