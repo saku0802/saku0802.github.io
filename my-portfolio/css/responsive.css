@@ -1,10 +1,53 @@
 /* responsive.css */
 @media screen and (max-width: 768px) {
   nav ul {
+    display: none;
     flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(51, 51, 51, 0.9);
+    padding: 1rem;
+  }
+
+  nav ul.active {
+    display: flex;
   }
 
   nav li {
     margin-bottom: 1rem;
+  }
+
+  .burger {
+    display: block;
+  }
+
+  .burger.active .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+
+  .burger.active .line2 {
+    opacity: 0;
+  }
+
+  .burger.active .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
+
+  .content {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
   }
 }
