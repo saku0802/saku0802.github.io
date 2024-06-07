@@ -1,150 +1,107 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>山川 朔弥 - ポートフォリオ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
-  <script src="js/main.js" defer></script>
 </head>
 <body>
-  <div id="loading">
-    <div class="spinner"></div>
-  </div>
-
   <header>
     <nav>
-      <div class="logo">山川 朔弥</div>
       <ul>
-        <li><a href="#about"><i class="fas fa-user"></i> 自己紹介</a></li>
-        <li><a href="#career"><i class="fas fa-briefcase"></i> 職務経歴</a></li>
-        <li><a href="#skills"><i class="fas fa-tools"></i> スキル</a></li>
-        <li><a href="#achievements"><i class="fas fa-trophy"></i> 実績</a></li>
-        <li><a href="#contact"><i class="fas fa-envelope"></i> お問い合わせ</a></li>
-        <li><a href="index_en.html"><i class="fas fa-globe"></i> English</a></li>
+        <li><a href="#top">トップ</a></li>
+        <li><a href="#career">職務経歴</a></li>
+        <li><a href="#skill">スキル</a></li>
+        <li><a href="#works">実績詳細</a></li>
+        <li><a href="index_en.html">English</a></li>
       </ul>
-      <div class="burger">
-        <div class="line1"></div>
-        <div class="line2"></div>
-        <div class="line3"></div>
-      </div>
     </nav>
   </header>
 
   <main>
-    <section id="about" class="parallax">
-      <div class="content">
-        <h1><i class="fas fa-user"></i> 山川 朔弥</h1>
-        <p>主にSNSによる広告宣伝を中心とし、セールスプロモーション、ブランディング等マーケティング業務において幅広い経験を積んでおります。新規プロジェクト責任者および、少人数(8〜11人)のマネジメントの経験もあります。</p>
-      </div>
+    <section id="top">
+      <h1>山川 朔弥</h1>
+      <p>SNSマーケティングのスペシャリスト。戦略立案から運用、データ分析まで一貫して担当し、各SNSで高い成果を上げてきました。事業責任者としてのマネジメント経験もあります。</p>
     </section>
 
     <section id="career">
-      <div class="content">
-        <h2><i class="fas fa-briefcase"></i> 職務経歴</h2>
+      <h2>職務経歴</h2>
+      <div class="career-item">
+        <h3>株式会社Next</h3>
+        <p class="duration">[在籍期間:2022年10月～2023年11月(1年2ヶ月)]</p>
+        <p class="role">取締役 兼 プロジェクト責任者</p>
         <ul>
-          <li>
-            <h3>株式会社 N 取締役</h3>
-            <p>2022年10月 - 2023年11月 (1年)</p>
-            <p>事業内容: システム開発、コンサルティング</p>
-            <ul>
-              <li>業務フロー改善</li>
-              <li>マーケティング戦略立案</li>
-              <li>プロジェクトマネジメント</li>
-            </ul>
-          </li>
-          <li>
-            <h3>個人コンサルタント</h3>
-            <p>2022年6月 - 2023年4月 (10ヶ月)</p>
-            <p>事業内容: 事業フロー、SNSマーケティングについてのコンサルティング</p>
-            <ul>
-              <li>コンサルティング業務</li>
-              <li>リード獲得業務</li>
-            </ul>
-          </li>
-          <li>
-            <h3>株式会社M マーケティング部</h3>
-            <p>2021年4月 - 2022年6月 (1年2ヶ月)</p>
-            <p>事業内容: コンテンツマーケティング, インフルエンサーマーケティング</p>
-            <ul>
-              <li>マーケティング戦略立案・実行</li>
-              <li>SNSアカウント運用</li>
-              <li>データ分析</li>
-            </ul>
-          </li>
+          <li>SNSマーケテイング戦略の立案と実行</li>
+          <li>SNSアカウントの運用・分析(Instagram, Twitter, YouTube)</li>
+          <li>インフルエンサーマーケティングの企画・推進</li>
+        </ul>
+        <p class="achievement">【主な実績】</p>
+        <ul>
+          <li>プロジェクトマネージャーとしてSNS管理ツールの開発、リリース。</li>
+          <li>計3社のコンサルティングを担当。</li>
+        </ul>
+      </div>
+
+      <div class="career-item">
+        <h3>個人事業主</h3>
+        <p class="duration">[在籍期間:2022年6月～2023年4月(10ヶ月)]</p>
+        <ul>
+          <li>SNSマーケティング戦略のコンサルティング</li>
+          <li>SNS運用の効率化・自動化によるコスト35%削減</li>
+          <li>コンテンツ企画・制作によるリード獲得数増加で売上200%達成</li>
+          <li>飲食店コンサルティング</li>
+        </ul>
+      </div>
+
+      <div class="career-item">
+        <h3>株式会社M</h3>
+        <p class="duration">[在籍期間: 2021年4月～2022年6月 (1年2ヶ月)]</p>
+        <p class="role">マーケティング部 責任者</p>
+        <ul>
+          <li>SNSマーケティング戦略の立案と実行</li>
+          <li>インフルエンサーマーケティングの企画・推進</li>
+          <li>コンテンツ企画・制作・分析</li>
+          <li>マーケティングチームのマネジメント(5名)</li>
+        </ul>
+        <p class="achievement">【主な実績】</p>
+        <ul>
+          <li>Twitterアカウント0から13万フォロワー達成</li>
+          <li>YouTubeによるリード獲得で担当コンテンツの純利益を3ヶ月で200%向上</li>
+          <li>Instagramフォロワー数を0から20,000まで増加</li>
+          <li>YouTubeチャンネル登録者数5万人達成</li>
+          <li>マーケティング施策の共有、実施により半年で社内利益率180%を達成</li>
         </ul>
       </div>
     </section>
 
-    <section id="skills" class="parallax">
-      <div class="content">
-        <h2><i class="fas fa-tools"></i> スキル</h2>
-        <ul>
-          <li>
-            <h3>情報分析能力</h3>
-            <p>Xをはじめとし、Instagram、Youtubeの数値観察からアルゴリズムを推測しバズらせ今まで関わらせていただいた会社のリードの増加、売上の増加に関わらせていただきました。</p>
-          </li>
-          <li>
-            <h3>課題解決能力</h3>
-            <p>SNS運用からプロダクトの開発、マネジメントまであらゆる領域で情報を適切に整理し、本質的な課題提唱を行うことで、素早く課題を解決してきました。PDCAの課題を出す精度が他の方よりも非常に高いと自負しております。</p>
-          </li>
-          <li>
-            <h3>プロジェクト推進能力</h3>
-            <p>プロジェクトを0からスタートし、プロジェクトマネージャーとしてリリースまで持っていきました。プロジェクトを進めていく上でボトルネックになる、法律面、人材の採用、人のマネジメント、リスク管理を適切に行うことができます。</p>
-          </li>
-        </ul>
-      </div>
+    <section id="skill">
+      <h2>得意分野・スキル</h2>
+      <ul>
+        <li><i class="fas fa-check-circle"></i>SNSマーケティング戦略立案・運用・分析</li>
+        <li><i class="fas fa-check-circle"></i>インフルエンサーマーケティング</li>
+        <li><i class="fas fa-check-circle"></i>コンテンツ企画・制作</li>
+        <li><i class="fas fa-check-circle"></i>データ分析に基づく課題抽出と施策立案</li>
+        <li><i class="fas fa-check-circle"></i>マーケティングチームのマネジメント</li>
+      </ul>
     </section>
 
-    <section id="achievements">
-      <div class="content">
-        <h2><i class="fas fa-trophy"></i> 実績</h2>
-        <h3>2020年 (個人事業主)</h3>
-        <ul>
-          <li>Instagramで週間インプレッション3,000,000達成</li>
-          <li>1日最大獲得ラインリスト数1,000人達成</li>
-          <li>Instagramフォロワー数20,000達成</li>
-          <li>Instagramフォロワー数6,000達成</li>
-        </ul>
-        <h3>2021年</h3>
-        <ul>
-          <li>株式会社Mで、X、Youtubeによるリード獲得数増加、それに伴い3ヶ月で担当コンテンツの純利益200%達成</li>
-          <li>事業責任者として半年で社内利益180%達成</li>
-          <li>株式会社MでXアカウント0→13万人達成 (その他万垢多数達成)</li>
-          <li>株式会社MでYoutubeアカウント0→5万人達成</li>
-        </ul>
-        <h3>2022年</h3>
-        <ul>
-          <li>個人事業主として名古屋、東京を中心にコンサルティング業務を行う</li>
-          <li>コンテンツ作成における業務の効率化、SNS運用、コンテンツ販売の半自動化を行いマーケティングコスト35%減</li>
-          <li>リード獲得数増加に伴い売上200%達成</li>
-        </ul>
-        <h3>2023年</h3>
-        <ul>
-          <li>自社SNS(X)50垢同時運用</li>
-          <li>Saas系ツール開発のウェイティングリスト500人達成</li>
-        </ul>
+    <section id="works">
+      <h2>実績詳細</h2>
+      <div class="work-item">
+        <h3>SNS管理ツールの開発・リリース</h3>
+        <p>プロジェクトマネージャーとして、SNS管理ツールの要件定義から開発、リリースまでを主導。ユーザーの利便性を追求し、直感的な操作性とデータ分析機能を実装。リリース後は多くの企業に導入いただき、SNS運用の効率化に貢献しました。</p>
       </div>
-    </section>
-
-    <section id="contact" class="parallax">
-      <div class="content">
-        <h2><i class="fas fa-envelope"></i> お問い合わせ</h2>
-        <form action="mailto:sakuyayamakawa0802@gmail.com" method="post" enctype="text/plain">
-          <label for="name">お名前</label>
-          <input type="text" id="name" name="name" required>
-
-          <label for="email">メールアドレス</label>
-          <input type="email" id="email" name="email" required>
-
-          <label for="message">メッセージ</label>
-          <textarea id="message" name="message" required></textarea>
-
-          <button type="submit">送信</button>
-        </form>
+      <div class="work-item">  
+        <h3>Instagramフォロワー数2万人達成</h3>
+        <p>Instagramアカウントの運用を担当。ターゲットユーザーを明確にし、ニーズに合ったコンテンツを定期的に発信。インフルエンサーとのタイアップ施策も実施し、フォロワー数を0から20,000まで増加させました。</p>
+      </div>
+      <div class="work-item">
+        <h3>YouTubeチャンネル登録者数5万人達成</h3>
+        <p>YouTubeチャンネルの立ち上げから運用まで一貫して担当。視聴者の興味を惹くタイトルや、見やすいサムネイル画像の作成など、様々な施策を実施。チャンネル登録者数を着実に増やし、最終的に5万人を達成しました。</p>
       </div>
     </section>
   </main>
@@ -152,5 +109,7 @@
   <footer>
     <p>&copy; 2023 Sakuya Yamakawa. All rights reserved.</p>
   </footer>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
