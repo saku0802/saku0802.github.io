@@ -6,39 +6,65 @@ body {
     color: #eee; /* 薄いグレー */
     background-color: #222; /* ダークグレー */
     line-height: 1.8;
+    transition: background-color 0.3s ease; /* ページ遷移アニメーション */
+}
+
+body.fade-out {
+    opacity: 0; 
 }
 
 /* コンテナー設定 */
 .container {
     width: 80%;
-    max-width: 800px; /* 最大幅を設定 */
+    max-width: 800px;
     margin: 0 auto;
     padding: 30px 20px;
 }
 
 /* ヘッダー設定 */
 header {
-    text-align: center;
-    padding: 40px 0;
+    background-color: #111; /* 少し濃いダークグレー */
+    padding: 20px 0;
+    position: fixed; 
+    top: 0; 
+    width: 100%; 
+    z-index: 10; 
 }
 
-header h1 {
-    font-size: 3em;
-    margin-bottom: 0.2em;
+.nav {
+    text-align: right;
 }
 
-header p {
-    font-size: 1.2em;
-    color: #007bff; /* 青系 */
+.nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav li {
+    display: inline-block; 
+    margin-left: 30px; 
+}
+
+.nav a {
+    text-decoration: none;
+    color: #eee;
     font-weight: bold;
+    transition: color 0.3s ease; 
 }
+
+.nav a:hover {
+    color: #007bff; /* 青系 */
+}
+
 
 /* プロフィール設定 */
 .profile {
     display: flex;
     align-items: center;
-    justify-content: center; /* 中央揃え */
+    justify-content: center; 
     margin-bottom: 60px;
+    padding-top: 80px;
 }
 
 .profile img {
@@ -46,23 +72,46 @@ header p {
     height: 200px;
     border-radius: 50%;
     margin-right: 40px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* 影を追加 */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
 }
 
 /* スキル設定 */
+.skills {
+    margin-bottom: 80px;
+}
+.skills h2,
+.experience h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.5em;
+    position: relative;
+}
+
+.skills h2::before,
+.experience h2::before {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px; 
+    height: 3px; 
+    background-color: #007bff; 
+}
+
 .skills ul {
     list-style-type: none;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* レスポンシブグリッド */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
     gap: 20px;
 }
 
 .skills li {
     padding: 15px;
-    border: 1px solid #444; /* 枠線を追加 */
+    border: 1px solid #444;
     border-radius: 8px;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* ホバーエフェクト */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .skills li:hover {
@@ -71,6 +120,10 @@ header p {
 }
 
 /* 経験設定 */
+.experience {
+    margin-bottom: 80px;
+}
+
 .experience .company {
     border-bottom: 1px solid #444;
     padding-bottom: 30px;
@@ -99,7 +152,7 @@ header p {
 
 /* フッター設定 */
 footer {
-    background-color: #111;
+    background-color: #111; 
     color: #fff;
     padding: 20px 0;
     text-align: center;
