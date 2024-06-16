@@ -169,3 +169,10 @@ footer {
   padding: 20px 0;
   text-align: center;
 }
+
+/* ナビゲーション設定 */
+.nav {
+  display: flex;
+  justify-content: flex-start; /* 左端に配置 */
+  align-items: center;
+}
