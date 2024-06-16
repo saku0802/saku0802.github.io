@@ -198,8 +198,27 @@ footer {
   text-align: center;
 }
 
+/* 履歴書テーブル */
+.cv-table {
+  width: 100%;
+  margin-bottom: 30px;
+  border-collapse: collapse; /* セルの線をまとめる */
+}
+
+.cv-table th,
+.cv-table td {
+  padding: 10px;
+  border: 1px solid #444; /* 線の色 */
+  text-align: left;
+}
+
+.cv-table th {
+  background-color: #333; /* ヘッダーの背景色 */
+  font-weight: bold;
+}
+
 .cv h2 {
-    margin-top: 80px; /* メニューバーの高さ分 */
+  margin-top: 80px; /* メニューバーの高さ分 */
 }
 
 .cv-profile {
