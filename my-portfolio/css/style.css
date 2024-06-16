@@ -66,7 +66,7 @@ header {
 
 /* main設定 */
 main {
-  padding-top: 60px; /* headerの高さ(20px * 2) + 20px分のマージンに変更 */
+  padding-top: 120px; /* headerの高さ(20px * 2) + 80px分のマージンに変更 */
 }
 
 /* プロフィール設定 */
@@ -222,12 +222,13 @@ footer {
 }
 
 .cv-profile {
-  text-align: center; /* 顔写真を中央に配置 */
-  margin-bottom: 30px; /* 下の要素との余白 */
+  /* text-align: center;  不要になったため削除 */
+  /* margin-bottom: 30px;  不要になったため削除 */
 }
 
 .cv-profile img {
-  width: 200px; /* 顔写真の幅 */
-  height: auto; /* 高さは自動調整 */
-  border-radius: 50%; /* 角丸にする */
+  width: 80px; /* 幅を小さく */
+  height: auto; 
+  border-radius: 50%; 
+  vertical-align: middle; /* セル内で垂直方向に中央揃え */
 }
