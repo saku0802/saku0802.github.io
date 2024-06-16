@@ -19,12 +19,13 @@ body.fade-out {
   max-width: 800px;
   margin: 0 auto;
   padding: 30px 20px;
+  position: relative;
 }
 
 /* ヘッダー設定 */
 header {
   padding: 40px 0; 
-  position: fixed; /* 画面上部に固定 */
+  position: fixed;
   top: 0; 
   width: 100%;
   z-index: 10;
@@ -74,7 +75,6 @@ main {
   align-items: center;
   justify-content: center; 
   margin-bottom: 60px;
-  /* padding-top: 140px;  不要になったため削除 */
   background-color: #1a1a1a; 
   padding: 60px 20px;
 }
