@@ -24,7 +24,7 @@ body.fade-out {
 /* ヘッダー設定 */
 header {
   padding: 40px 0; 
-  position: relative; 
+  position: fixed; /* 固定位置に変更 */
   top: 0;
   width: 100%;
   z-index: 10;
@@ -90,7 +90,6 @@ header {
 .profile-text p {
     font-size: 1em;
 }
-
 
 /* スキル設定 */
 .skills {
