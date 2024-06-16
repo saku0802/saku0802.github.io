@@ -23,18 +23,18 @@ body.fade-out {
 
 /* ヘッダー設定 */
 header {
-  padding: 20px 0;
-  position: fixed; 
-  top: 0; 
-  width: 100%; 
-  z-index: 10; 
-  background-color: rgba(0, 0, 0, 0.8); /* 透明度のある黒背景を追加 */
+  padding: 40px 0; /* 上下に40pxの余白 */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 /* ナビゲーション設定 */
 .nav {
   display: flex;
-  justify-content: flex-start; /* 左端に配置 */
+  justify-content: center; /* 中央揃え */
   align-items: center;
 }
 
@@ -69,7 +69,7 @@ header {
   align-items: center;
   justify-content: center; 
   margin-bottom: 60px;
-  padding-top: 120px; /* ヘッダーの高さを考慮して調整 */
+  padding-top: 160px; /* ヘッダーの高さを考慮して調整 */
   background-color: #1a1a1a; 
   padding: 60px 20px;
 }
