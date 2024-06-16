@@ -4,9 +4,9 @@ body {
   margin: 0;
   padding: 0;
   color: #eee;
-  background-color: #222; 
+  background-color: #222;
   line-height: 1.8;
-  transition: background-color 0.3s ease; 
+  transition: background-color 0.3s ease;
 }
 
 body.fade-out {
@@ -28,39 +28,64 @@ header {
   top: 0; 
   width: 100%; 
   z-index: 10; 
-  background-color: transparent; /* 背景色を透明にする */
+  background-color: transparent;
 }
 
-/* メニュー設定 */
+/* ナビゲーション設定 */
 .nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.nav ul {
+.logo {
+  float: left; 
+}
+
+.logo img,
+.logo span {
+  display: block; 
+}
+
+.nav-list {
   list-style: none;
   margin: 0;
   padding: 0;
+  display: flex; /* 横並び */
 }
 
-.nav li {
-  display: inline-block; 
-  margin: 0 10px; 
+.nav-item {
+  margin: 0 10px; /* アイテム間のマージン */
 }
 
 .nav a {
   text-decoration: none;
   color: #eee;
   font-weight: bold;
-  transition: color 0.3s ease; 
+  transition: color 0.3s ease, background-color 0.3s ease;
   padding: 10px; 
+  border-radius: 5px; 
 }
 
 .nav a:hover {
-  color: #007bff; 
-  background-color: rgba(0, 123, 255, 0.1); 
-  border-radius: 5px; 
+  color: #007bff;
+  background-color: rgba(0, 123, 255, 0.1);
+}
+
+/* ハンバーガーメニュー設定 */
+.hamburger {
+  display: none; /* デフォルトでは非表示 */
+  cursor: pointer;
+  padding: 10px;
+}
+
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  margin: 5px 0;
+  transition: 0.3s ease-in-out;
 }
 
 /* プロフィール設定 */
@@ -70,7 +95,7 @@ header {
   justify-content: center; 
   margin-bottom: 60px;
   padding-top: 80px;
-  background-color: #1a1a1a; /* 少しだけ濃いダークグレー */
+  background-color: #1a1a1a; 
   padding: 60px 20px;
 }
 
@@ -85,7 +110,7 @@ header {
 /* スキル設定 */
 .skills {
   margin-bottom: 80px;
-  background-color: #272727; /* 少しだけ濃いダークグレー */
+  background-color: #272727; 
   padding: 60px 20px;
 }
 
@@ -132,7 +157,7 @@ header {
 /* 経験設定 */
 .experience {
   margin-bottom: 80px;
-  background-color: #202020; /* 少しだけ濃いダークグレー */
+  background-color: #202020; 
   padding: 60px 20px;
 }
 
@@ -172,8 +197,35 @@ footer {
 
 /* 画面幅が狭い場合のハンバーガーメニュー */
 @media screen and (max-width: 768px) {
-  .nav ul {
-    display: none; /* メニューを非表示にする */
+  .nav-list {
+    display: none; 
+    position: absolute;
+    top: 60px; /* ヘッダーの高さを考慮 */
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    text-align: center;
   }
-  /* ハンバーガーメニューのスタイルは、後ほど追加します */
+
+  .nav-list.active {
+    display: block;
+  }
+
+  .nav-item {
+    margin: 10px 0; /* 縦並びのため上下のマージン */
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
 }
