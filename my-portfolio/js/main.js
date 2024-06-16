@@ -8,12 +8,3 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }, 300);
   });
 });
-
-// ハンバーガーメニュー
-const hamburger = document.querySelector('.hamburger');
-const navList = document.querySelector('.nav-list');
-
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('active');
-  navList.classList.toggle('active');
-});
