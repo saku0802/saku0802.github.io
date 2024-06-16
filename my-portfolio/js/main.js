@@ -1,8 +1,12 @@
 // ページ遷移アニメーション
-document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(function() {
-        document.body.classList.add('loaded');
-    }, 300); // 少し遅らせて表示
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault(); // ページ遷移をキャンセル
+
+        document.body.classList.add('fade-out');
+
+        setTimeout(function() {
+            window.location.href = anchor.getAttribute('href'); 
+        }, 300); // フェードアウトにかかる時間と同じにする
+    });
 });
-// 言語切り替え機能は、後ほど実装します。
-console.log("JavaScriptファイルを読み込みました。");
