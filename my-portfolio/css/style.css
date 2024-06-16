@@ -197,3 +197,18 @@ footer {
   padding: 20px 0;
   text-align: center;
 }
+
+.cv h2 {
+    margin-top: 80px; /* メニューバーの高さ分 */
+}
+
+.cv-profile {
+  text-align: center; /* 顔写真を中央に配置 */
+  margin-bottom: 30px; /* 下の要素との余白 */
+}
+
+.cv-profile img {
+  width: 200px; /* 顔写真の幅 */
+  height: auto; /* 高さは自動調整 */
+  border-radius: 50%; /* 角丸にする */
+}
