@@ -24,7 +24,7 @@ body.fade-out {
 
 /* ヘッダー設定 */
 header {
-  padding: 40px 0; 
+  padding: 20px 0; /* 40px から 20px に変更 */
   position: fixed;
   top: 0; 
   width: 100%;
@@ -47,7 +47,7 @@ header {
 }
 
 .nav-item {
-  margin: 0 10px; /* アイテム間のマージン */
+  margin: 0 5px; /* 10px から 5px に変更 */
 }
 
 .nav a {
@@ -66,7 +66,7 @@ header {
 
 /* main設定 */
 main {
-  padding-top: 80px; /* headerの高さ(40px * 2)分のマージン */
+  padding-top: 60px; /* headerの高さ(20px * 2) + 20px分のマージンに変更 */
 }
 
 /* プロフィール設定 */
