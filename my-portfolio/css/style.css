@@ -24,7 +24,7 @@ body.fade-out {
 
 /* ヘッダー設定 */
 header {
-  padding: 20px 0; /* 40px から 20px に変更 */
+  padding: 20px 0; 
   position: fixed;
   top: 0; 
   width: 100%;
@@ -47,7 +47,7 @@ header {
 }
 
 .nav-item {
-  margin: 0 5px; /* 10px から 5px に変更 */
+  margin: 0 10px; /* アイテム間のマージン */
 }
 
 .nav a {
@@ -87,7 +87,8 @@ main {
   box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
 }
 
-.profile-text h1 {
+.profile-text { /* overflow: hidden; を追加 */
+    overflow: hidden;
     font-size: 2em;
     margin-bottom: 0.5em;
 }
