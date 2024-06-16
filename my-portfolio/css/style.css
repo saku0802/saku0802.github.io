@@ -87,14 +87,13 @@ main {
   box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
 }
 
-.profile-text { /* overflow: hidden; を追加 */
-    overflow: hidden;
-    font-size: 2em;
+.profile-text h1 {
+    font-size: 2.5em; /* フォントサイズを修正 */
     margin-bottom: 0.5em;
 }
 
 .profile-text p {
-    font-size: 1em;
+    font-size: 1em; /* フォントサイズを修正 */
 }
 
 
@@ -106,7 +105,8 @@ main {
 }
 
 .skills h2,
-.experience h2 {
+.experience h2,
+.self-pr h2 { /* 自己PRの見出しにも適用 */
   text-align: center;
   margin-bottom: 20px;
   font-size: 2.5em;
@@ -114,7 +114,8 @@ main {
 }
 
 .skills h2::before,
-.experience h2::before {
+.experience h2::before,
+.self-pr h2::before { /* 自己PRの見出しにも適用 */
   content: "";
   position: absolute;
   bottom: -10px;
@@ -176,6 +177,17 @@ main {
 .experience ul {
   list-style-type: disc;
   padding-left: 40px;
+}
+
+/* 自己PR設定 */
+.self-pr {
+  margin-bottom: 80px;
+  background-color: #272727; 
+  padding: 60px 20px;
+}
+
+.self-pr p {
+  margin-bottom: 1.5em;
 }
 
 /* フッター設定 */
