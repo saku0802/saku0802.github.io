@@ -1,12 +1,19 @@
 // ページ遷移アニメーション
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault(); // ページ遷移をキャンセル
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    document.body.classList.add('fade-out');
+    setTimeout(function() {
+        window.location.href = anchor.getAttribute('href'); 
+    }, 300);
+  });
+});
 
-        document.body.classList.add('fade-out');
+// ハンバーガーメニュー
+const hamburger = document.querySelector('.hamburger');
+const navList = document.querySelector('.nav-list');
 
-        setTimeout(function() {
-            window.location.href = anchor.getAttribute('href'); 
-        }, 300); // フェードアウトにかかる時間と同じにする
-    });
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  navList.classList.toggle('active');
 });
