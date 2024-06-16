@@ -1,74 +1,90 @@
 /* 全体設定 */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Noto Sans JP', sans-serif;
     margin: 0;
     padding: 0;
-    color: #333; /* ダークグレー */
-    line-height: 1.6;
+    color: #eee; /* 薄いグレー */
+    background-color: #222; /* ダークグレー */
+    line-height: 1.8;
 }
 
 /* コンテナー設定 */
 .container {
     width: 80%;
+    max-width: 800px; /* 最大幅を設定 */
     margin: 0 auto;
-    padding: 20px;
+    padding: 30px 20px;
 }
 
 /* ヘッダー設定 */
 header {
-    background-color: #f0f0f0; /* 薄いグレー */
-    padding: 30px 0;
     text-align: center;
+    padding: 40px 0;
 }
 
 header h1 {
-    font-size: 2.5em;
-    margin-bottom: 0.5em;
+    font-size: 3em;
+    margin-bottom: 0.2em;
+}
+
+header p {
+    font-size: 1.2em;
+    color: #007bff; /* 青系 */
+    font-weight: bold;
 }
 
 /* プロフィール設定 */
 .profile {
     display: flex;
     align-items: center;
-    margin-bottom: 40px;
+    justify-content: center; /* 中央揃え */
+    margin-bottom: 60px;
 }
 
 .profile img {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    margin-right: 30px;
+    margin-right: 40px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* 影を追加 */
 }
 
 /* スキル設定 */
 .skills ul {
     list-style-type: none;
     padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* レスポンシブグリッド */
+    gap: 20px;
 }
 
 .skills li {
-    width: 48%;
-    margin-bottom: 10px;
+    padding: 15px;
+    border: 1px solid #444; /* 枠線を追加 */
+    border-radius: 8px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* ホバーエフェクト */
+}
+
+.skills li:hover {
+    background-color: #333; 
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
 }
 
 /* 経験設定 */
 .experience .company {
-    border-bottom: 1px solid #eee;
-    padding-bottom: 20px;
-    margin-bottom: 30px;
+    border-bottom: 1px solid #444;
+    padding-bottom: 30px;
+    margin-bottom: 40px;
 }
 
 .experience h3 {
-    margin-bottom: 0.3em;
+    margin-bottom: 0.5em;
 }
 
 .experience .period {
     font-size: 0.9em;
-    color: #666;
-    margin-bottom: 0.5em;
+    color: #999;
+    margin-bottom: 1em;
 }
 
 .experience .position {
@@ -83,7 +99,7 @@ header h1 {
 
 /* フッター設定 */
 footer {
-    background-color: #333; /* ダークグレー */
+    background-color: #111;
     color: #fff;
     padding: 20px 0;
     text-align: center;
