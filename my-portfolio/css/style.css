@@ -23,7 +23,7 @@ body.fade-out {
 
 /* ヘッダー設定 */
 header {
-  padding: 40px 0; 
+  padding: 20px 0; /* パディングを減らして高さを調整 */
   position: fixed; /* 固定位置に変更 */
   top: 0;
   width: 100%;
@@ -69,7 +69,7 @@ header {
   align-items: center;
   justify-content: center; 
   margin-bottom: 60px;
-  padding-top: 140px; /* headerの高さを考慮したマージン (40px + 100px) */
+  padding-top: 120px; /* headerの高さを考慮したマージン (20px + 100px) */
   background-color: #1a1a1a; 
   padding: 60px 20px;
 }
