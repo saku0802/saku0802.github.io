@@ -34,7 +34,7 @@ header {
 /* ナビゲーション設定 */
 .nav {
   display: flex;
-  justify-content: flex-end; /* 右端に配置 */
+  justify-content: flex-start; /* 左端に配置 */
   align-items: center;
 }
 
@@ -168,11 +168,4 @@ footer {
   color: #fff;
   padding: 20px 0;
   text-align: center;
-}
-
-/* ナビゲーション設定 */
-.nav {
-  display: flex;
-  justify-content: flex-start; /* 左端に配置 */
-  align-items: center;
 }
