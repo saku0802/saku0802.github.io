@@ -23,9 +23,9 @@ body.fade-out {
 
 /* ヘッダー設定 */
 header {
-  padding: 20px 0; /* パディングを減らして高さを調整 */
-  position: fixed; /* 固定位置に変更 */
-  top: 0;
+  padding: 40px 0; 
+  position: fixed; /* 画面上部に固定 */
+  top: 0; 
   width: 100%;
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.8);
@@ -63,13 +63,18 @@ header {
   background-color: rgba(0, 123, 255, 0.1);
 }
 
+/* main設定 */
+main {
+  padding-top: 80px; /* headerの高さ(40px * 2)分のマージン */
+}
+
 /* プロフィール設定 */
 .profile {
   display: flex;
   align-items: center;
   justify-content: center; 
   margin-bottom: 60px;
-  padding-top: 120px; /* headerの高さを考慮したマージン (20px + 100px) */
+  /* padding-top: 140px;  不要になったため削除 */
   background-color: #1a1a1a; 
   padding: 60px 20px;
 }
@@ -90,6 +95,7 @@ header {
 .profile-text p {
     font-size: 1em;
 }
+
 
 /* スキル設定 */
 .skills {
