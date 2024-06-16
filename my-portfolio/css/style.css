@@ -28,23 +28,14 @@ header {
   top: 0; 
   width: 100%; 
   z-index: 10; 
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.8); /* 透明度のある黒背景を追加 */
 }
 
 /* ナビゲーション設定 */
 .nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end; /* 右端に配置 */
   align-items: center;
-}
-
-.logo {
-  float: left; 
-}
-
-.logo img,
-.logo span {
-  display: block; 
 }
 
 .nav-list {
@@ -72,29 +63,13 @@ header {
   background-color: rgba(0, 123, 255, 0.1);
 }
 
-/* ハンバーガーメニュー設定 */
-.hamburger {
-  display: none; /* デフォルトでは非表示 */
-  cursor: pointer;
-  padding: 10px;
-}
-
-.hamburger span {
-  display: block;
-  width: 25px;
-  height: 3px;
-  background-color: #fff;
-  margin: 5px 0;
-  transition: 0.3s ease-in-out;
-}
-
 /* プロフィール設定 */
 .profile {
   display: flex;
   align-items: center;
   justify-content: center; 
   margin-bottom: 60px;
-  padding-top: 80px;
+  padding-top: 120px; /* ヘッダーの高さを考慮して調整 */
   background-color: #1a1a1a; 
   padding: 60px 20px;
 }
@@ -193,39 +168,4 @@ footer {
   color: #fff;
   padding: 20px 0;
   text-align: center;
-}
-
-/* 画面幅が狭い場合のハンバーガーメニュー */
-@media screen and (max-width: 768px) {
-  .nav-list {
-    display: none; 
-    position: absolute;
-    top: 60px; /* ヘッダーの高さを考慮 */
-    left: 0;
-    width: 100%;
-    background-color: #333;
-    text-align: center;
-  }
-
-  .nav-list.active {
-    display: block;
-  }
-
-  .nav-item {
-    margin: 10px 0; /* 縦並びのため上下のマージン */
-  }
-
-  .hamburger {
-    display: block;
-  }
-
-  .hamburger.active span:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-  }
-  .hamburger.active span:nth-child(2) {
-    opacity: 0;
-  }
-  .hamburger.active span:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-  }
 }
