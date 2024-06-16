@@ -1,171 +1,181 @@
 /* 全体設定 */
 body {
-  font-family: 'Noto Sans JP', sans-serif;
-  margin: 0;
-  padding: 0;
-  color: #eee;
-  background-color: #222;
-  line-height: 1.8;
-  transition: background-color 0.3s ease;
+ font-family: 'Noto Sans JP', sans-serif;
+ margin: 0;
+ padding: 0;
+ color: #eee;
+ background-color: #222;
+ line-height: 1.8;
+ transition: background-color 0.3s ease;
 }
 
 body.fade-out {
-  opacity: 0; 
+ opacity: 0; 
 }
 
 /* コンテナー設定 */
 .container {
-  width: 80%;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 30px 20px;
+ width: 80%;
+ max-width: 800px;
+ margin: 0 auto;
+ padding: 30px 20px;
 }
 
 /* ヘッダー設定 */
 header {
-  padding: 40px 0; /* 上下に40pxの余白 */
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 10;
-  background-color: rgba(0, 0, 0, 0.8);
+ padding: 40px 0; 
+ position: relative; /* fixed から relative に変更 */
+ top: 0;
+ width: 100%;
+ z-index: 10;
+ background-color: rgba(0, 0, 0, 0.8);
 }
 
 /* ナビゲーション設定 */
 .nav {
-  display: flex;
-  justify-content: center; /* 中央揃え */
-  align-items: center;
+ display: flex;
+ justify-content: center; /* 中央揃え */
+ align-items: center;
 }
 
 .nav-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex; /* 横並び */
+ list-style: none;
+ margin: 0;
+ padding: 0;
+ display: flex; /* 横並び */
 }
 
 .nav-item {
-  margin: 0 10px; /* アイテム間のマージン */
+ margin: 0 10px; /* アイテム間のマージン */
 }
 
 .nav a {
-  text-decoration: none;
-  color: #eee;
-  font-weight: bold;
-  transition: color 0.3s ease, background-color 0.3s ease;
-  padding: 10px; 
-  border-radius: 5px; 
+ text-decoration: none;
+ color: #eee;
+ font-weight: bold;
+ transition: color 0.3s ease, background-color 0.3s ease;
+ padding: 10px; 
+ border-radius: 5px; 
 }
 
 .nav a:hover {
-  color: #007bff;
-  background-color: rgba(0, 123, 255, 0.1);
+ color: #007bff;
+ background-color: rgba(0, 123, 255, 0.1);
 }
 
 /* プロフィール設定 */
 .profile {
-  display: flex;
-  align-items: center;
-  justify-content: center; 
-  margin-bottom: 60px;
-  padding-top: 160px; /* ヘッダーの高さを考慮して調整 */
-  background-color: #1a1a1a; 
-  padding: 60px 20px;
+ display: flex;
+ align-items: center;
+ justify-content: center; 
+ margin-bottom: 60px;
+ padding-top: 100px; /* headerの高さを考慮したマージンを追加 */
+ background-color: #1a1a1a; 
+ padding: 60px 20px;
 }
 
 .profile img {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  margin-right: 40px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
+ width: 200px;
+ height: 200px;
+ border-radius: 50%;
+ margin-right: 40px;
+ box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
 }
+
+.profile-text h1 {
+   font-size: 2em;
+   margin-bottom: 0.5em;
+}
+
+.profile-text p {
+   font-size: 1em;
+}
+
 
 /* スキル設定 */
 .skills {
-  margin-bottom: 80px;
-  background-color: #272727; 
-  padding: 60px 20px;
+ margin-bottom: 80px;
+ background-color: #272727; 
+ padding: 60px 20px;
 }
 
 .skills h2,
 .experience h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 2.5em;
-  position: relative;
+ text-align: center;
+ margin-bottom: 20px;
+ font-size: 2.5em;
+ position: relative;
 }
 
 .skills h2::before,
 .experience h2::before {
-  content: "";
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px; 
-  height: 3px; 
-  background-color: #007bff; 
+ content: "";
+ position: absolute;
+ bottom: -10px;
+ left: 50%;
+ transform: translateX(-50%);
+ width: 100px; 
+ height: 3px; 
+ background-color: #007bff; 
 }
 
 .skills ul {
-  list-style-type: none;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-  gap: 20px;
+ list-style-type: none;
+ padding: 0;
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+ gap: 20px;
 }
 
 .skills li {
-  padding: 15px;
-  border: 1px solid #444;
-  border-radius: 8px;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+ padding: 15px;
+ border: 1px solid #444;
+ border-radius: 8px;
+ transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .skills li:hover {
-  background-color: #333; 
-  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+ background-color: #333; 
+ box-shadow: 0 6px 12px rgba(0,0,0,0.3);
 }
 
 /* 経験設定 */
 .experience {
-  margin-bottom: 80px;
-  background-color: #202020; 
-  padding: 60px 20px;
+ margin-bottom: 80px;
+ background-color: #202020; 
+ padding: 60px 20px;
 }
 
 .experience .company {
-  border-bottom: 1px solid #444;
-  padding-bottom: 30px;
-  margin-bottom: 40px;
+ border-bottom: 1px solid #444;
+ padding-bottom: 30px;
+ margin-bottom: 40px;
 }
 
 .experience h3 {
-  margin-bottom: 0.5em;
+ margin-bottom: 0.5em;
 }
 
 .experience .period {
-  font-size: 0.9em;
-  color: #999;
-  margin-bottom: 1em;
+ font-size: 0.9em;
+ color: #999;
+ margin-bottom: 1em;
 }
 
 .experience .position {
-  font-weight: bold;
-  margin-bottom: 1em;
+ font-weight: bold;
+ margin-bottom: 1em;
 }
 
 .experience ul {
-  list-style-type: disc;
-  padding-left: 40px;
+ list-style-type: disc;
+ padding-left: 40px;
 }
 
 /* フッター設定 */
 footer {
-  background-color: #111; 
-  color: #fff;
-  padding: 20px 0;
-  text-align: center;
+ background-color: #111; 
+ color: #fff;
+ padding: 20px 0;
+ text-align: center;
 }
