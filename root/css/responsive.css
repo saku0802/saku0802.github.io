@@ -1,0 +1,129 @@
+/* モバイルファースト */
+
+/* タブレット（768px以上） */
+@media screen and (min-width: 768px) {
+    .container {
+        max-width: 960px;
+    }
+
+    /* ナビゲーション */
+    #main-nav {
+        display: block;
+    }
+
+    #main-nav ul {
+        text-align: right;
+    }
+
+    #main-nav li {
+        display: inline-block;
+        margin-left: 40px;
+    }
+
+    /* ヒーローセクション */
+    .hero {
+        min-height: 600px;
+    }
+
+    .hero-content h2 {
+        font-size: 60px;
+    }
+
+    /* セクション */
+    .section {
+        padding: 100px 0;
+    }
+
+    .section h2 {
+        font-size: 42px;
+    }
+
+    /* スキルセクション */
+    .skills .skill-item {
+        width: 45%;
+    }
+}
+
+/* デスクトップ（1024px以上） */
+@media screen and (min-width: 1024px) {
+    .container {
+        max-width: 1200px;
+    }
+
+    /* ヒーローセクション */
+    .hero {
+        min-height: 700px;
+    }
+
+    .hero-content h2 {
+        font-size: 72px;
+    }
+
+    /* セクション */
+    .section {
+        padding: 120px 0;
+    }
+
+    .section h2 {
+        font-size: 48px;
+    }
+
+    /* スキルセクション */
+    .skills .skill-item {
+        width: 28%;
+    }
+}
+
+/* モバイルメニュー */
+@media screen and (max-width: 767px) {
+    #mobile-menu-btn {
+        display: block;
+    }
+
+    #main-nav {
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    #main-nav ul {
+        text-align: center;
+    }
+
+    #main-nav li {
+        display: block;
+        margin: 0;
+        padding: 15px 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    /* ヘッダーのロゴとメニューボタンの位置調整 */
+    header .container {
+        position: relative;
+    }
+
+    .language-switcher {
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+    }
+
+    /* スキルセクション */
+    .skills .skill-item {
+        width: 90%;
+    }
+
+    /* ギャラリープレビュー */
+    .gallery-preview {
+        flex-direction: column;
+    }
+
+    .gallery-link img {
+        width: 100%;
+    }
+}

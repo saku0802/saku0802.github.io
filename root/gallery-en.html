@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sakuya Yamakawa | Global Journey</title>
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&display=swap">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/gallery.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="index-en.html">Sakuya Yamakawa</a></h1>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index-en.html#about">About Me</a></li>
+                    <li><a href="index-en.html#skills">Skills</a></li>
+                    <li><a href="index-en.html#experience">Experience</a></li>
+                    <li><a href="index-en.html#projects">Projects</a></li>
+                    <li><a href="#journey">My Global Journey</a></li>
+                    <li><a href="index-en.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="language-switcher">
+                <a href="gallery.html"><img src="images/flags/jp.svg" alt="Japanese"></a>
+            </div>
+            <button id="mobile-menu-btn">
+                <span class="material-icons">menu</span>
+            </button>
+        </div>
+    </header>
+
+    <section id="gallery" class="section">
+        <div class="container">
+            <h2>My Global Journey</h2>
+
+            <div class="gallery-filter">
+                <button class="active" data-filter="all">All</button>
+                <button data               -filter="2023">2023</button>
+                <button data-filter="2022">2022</button>
+                <button data-filter="culture">Culture</button>
+                <button data-filter="nature">Nature</button>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="hexagon" data-year="2023" data-theme="culture">
+                    <div class="hexagon-inner">
+                        <img src="images/gallery/image1.jpg" alt="Gallery Image 1" data-target="modal-image1-en">
+                        <div class="hexagon-back">
+                            <h3>Title 1</h3>
+                            <p>Description 1</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hexagon" data-year="2022" data-theme="nature">
+                    <div class="hexagon-inner">
+                        <img src="images/gallery/image2.jpg" alt="Gallery Image 2" data-target="modal-image2-en">
+                        <div class="hexagon-back">
+                            <h3>Title 2</h3>
+                            <p>Description 2</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hexagon" data-year="2023" data-theme="culture">
+                    <div class="hexagon-inner">
+                        <img src="images/gallery/image3.jpg" alt="Gallery Image 3" data-target="modal-image3-en">
+                        <div class="hexagon-back">
+                            <h3>Title 3</h3>
+                            <p>Description 3</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- さらに画像を追加 -->
+            </div>
+
+            <a href="index-en.html" class="btn">Back</a>
+        </div>
+    </section>
+
+    <div id="modal-image1-en" class="modal">
+        <span class="close-btn">×</span>
+        <img src="images/gallery/image1.jpg" alt="Gallery Image 1">
+        <div class="modal-caption">
+            <h3>Title 1</h3>
+            <p>Description 1</p>
+        </div>
+    </div>
+
+    <div id="modal-image2-en" class="modal">
+        <span class="close-btn">×</span>
+        <img src="images/gallery/image2.jpg" alt="Gallery Image 2">
+        <div class="modal-caption">
+            <h3>Title 2</h3>
+            <p>Description 2</p>
+        </div>
+    </div>
+
+    <div id="modal-image3-en" class="modal">
+        <span class="close-btn">×</span>
+        <img src="images/gallery/image3.jpg" alt="Gallery Image 3">
+        <div class="modal-caption">
+            <h3>Title 3</h3>
+            <p>Description 3</p>
+        </div>
+    </div>
+    <!-- さらにモーダルを追加 -->
+
+    <footer>
+        <div class="container">
+            <p>© 2023 Sakuya Yamakawa</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/gallery.js"></script>
+</body>
+</html>
