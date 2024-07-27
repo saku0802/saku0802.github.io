@@ -12,24 +12,25 @@
 </head>
 <body>
     <header>
-        <div class="container">
-            <h1><a href="index.html">山川 朔弥</a></h1>
-            <nav id="main-nav">
-                <ul>
-                    <li><a href="index.html#about">About Me</a></li>
-                    <li><a href="index.html#skills">Skills</a></li>
-                    <li><a href="index.html#experience">Experience</a></li>
-                    <li><a href="index.html#projects">Projects</a></li>
-                    <li><a href="#journey">My Global Journey</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="language-switcher">
-                <a href="gallery-en.html"><img src="images/flags/en.svg" alt="English"></a>
+        <div class="header-image">
+            <div class="container">
+                <h1><a href="index.html">山川 朔弥</a></h1>
+                <nav id="main-nav">
+                    <ul>
+                        <li><a href="index.html#about">About Me</a></li>
+                        <li><a href="index.html#skills">Skills</a></li>
+                        <li><a href="index.html#experience">Experience</a></li>
+                        <li><a href="#journey">My Global Journey</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="language-switcher">
+                    <a href="gallery-en.html">English</a>
+                </div>
+                <button id="mobile-menu-btn">
+                    <span class="material-icons">menu</span>
+                </button>
             </div>
-            <button id="mobile-menu-btn">
-                <span class="material-icons">menu</span>
-            </button>
         </div>
     </header>
 
@@ -39,74 +40,328 @@
 
             <div class="gallery-filter">
                 <button class="active" data-filter="all">すべて</button>
-                <button data-filter="2023">2023</button>
-                <button data-filter="2022">2022</button>
-                <button data-filter="culture">文化</button>
-                <button data-filter="nature">自然</button>
+                <button data-filter="volunteer">ボランティア</button>
+                <button data-filter="cultural">国際交流</button>
+                <button data-filter="fun">遊び</button>
             </div>
 
             <div class="gallery-grid">
-                <div class="hexagon" data-year="2023" data-theme="culture">
-                    <div class="hexagon-inner">
-                        <img src="images/gallery/image1.jpg" alt="Gallery Image 1" data-target="modal-image1">
-                        <div class="hexagon-back">
-                            <h3>タイトル1</h3>
-                            <p>説明文1</p>
-                        </div>
-                    </div>
+                <div class="preview-item" data-theme="volunteer">
+                    <a href="#modal-image1" data-title="ゴミ拾い" data-description="八王子で飛び入りでゴミ拾いに参加した時の画像">
+                        <img src="images/gallery/1.jpg" alt="Gallery Image 1">
+                    </a>
                 </div>
-                <div class="hexagon" data-year="2022" data-theme="nature">
-                    <div class="hexagon-inner">
-                        <img src="images/gallery/image2.jpg" alt="Gallery Image 2" data-target="modal-image2">
-                        <div class="hexagon-back">
-                            <h3>タイトル2</h3>
-                            <p>説明文2</p>
-                        </div>
-                    </div>
+                <div class="preview-item" data-theme="cultural">
+                    <a href="#modal-image2" data-title="お別れBBQ" data-description="友達がフランスに帰国する際にBBQした時の画像">
+                        <img src="images/gallery/24.jpg" alt="Gallery Image 2">
+                    </a>
                 </div>
-                <div class="hexagon" data-year="2023" data-theme="culture">
-                    <div class="hexagon-inner">
-                        <img src="images/gallery/image3.jpg" alt="Gallery Image 3" data-target="modal-image3">
-                        <div class="hexagon-back">
-                            <h3>タイトル3</h3>
-                            <p>説明文3</p>
-                        </div>
-                    </div>
+                <div class="preview-item" data-theme="fun">
+                    <a href="#modal-image3" data-title="飲み" data-description="日本語学校に通っている友達と飲んでいる画像">
+                        <img src="images/gallery/4.jpg" alt="Gallery Image 3">
+                    </a>
                 </div>
-                <!-- さらに画像を追加 -->
+                <!-- 以下、画像を18枚追加 (合計21枚) -->
+                
+                <div class="preview-item" data-theme="cultural">
+                    <a href="#modal-image5" data-title="誕生日パーティ" data-description="友達の誕生日にパーティをした時の画像">
+                        <img src="images/gallery/20.jpg" alt="Gallery Image 5">
+                    </a>
+                </div>
+                <div class="preview-item" data-theme="fun">
+                    <a href="#modal-image6" data-title="飲み" data-description="クラブで日本に在住している友達と飲んでいる画像">
+                        <img src="images/gallery/22.jpg" alt="Gallery Image 6">
+                    </a>
+                </div>
+                <div class="preview-item" data-theme="fun">
+                    <a href="#modal-image7" data-title="UC Berkeley" data-description="アメリカに住んでいた際UC Berkeleyに行った時の画像">
+                        <img src="images/gallery/17.jpg" alt="Gallery Image 7">
+                    </a>
+                </div>
+                <div class="preview-item" data-theme="cultural">
+                    <a href="#modal-image8" data-title="鰻" data-description="みんなで鰻を食べに行った際の画像">
+                        <img src="images/gallery/8.jpg" alt="Gallery Image 8">
+                    </a>
+                </div>
+                <div class="preview-item" data-theme="fun">
+                    <a href="#modal-image9" data-title="クラブ" data-description="友人とひたすら飲んでいた際の画像">
+                        <img src="images/gallery/2.jpg" alt="Gallery Image 9">
+                    </a>
+                </div>
+                <div class="preview-item" data-theme="fun">
+                    <a href="#modal-image10" data-title="観光案内" data-description="日本語学校に通っていた友人に東京を案内した時の画像">
+                        <img src="images/gallery/5.jpg" alt="Gallery Image 10">
+                    </a>
+                </div>
+                <div class="preview-item" data-theme="cultural">
+                    <a href="#modal-image11" data-title="誕生日BBQ" data-description="インド人の友人の誕生日に誕生日パーティーをした時の画像">
+                        <img src="images/gallery/21.jpg" alt="Gallery Image 11">
+                    </a>
+                </div>
+                <div class="preview-item" data-theme="fun">
+                    <a href="#modal-image12" data-title="行きつけのバー" data-description="行きつけのバーで仲良くなった友人と飲んでいる時の画像">
+                        <img src="images/gallery/3.jpg" alt="Gallery Image 12">
+                    </a>
+                </div>
+                <div class="preview-item" data-theme="fun">
+                    <a href="#modal-image13" data-title="海" data-description="海でハイキングした時の画像">
+                        <img src="images/gallery/9.jpg" alt="Gallery Image 13">
+                    </a>
+                </div>
+                <div class="preview-item" data-theme="fun">
+                    <a href="#modal-image14" data-title="ドンキホーテ" data-description="ドンキホーテの前の広場でみんなで飲んだ際の画像">
+                        <img src="images/gallery/18.jpg" alt="Gallery Image 14">
+                    </a>
+                </div>
+                <div class="preview-item" data-theme="cultural">
+                    <a href="#modal-image16" data-title="クリスマスパーティー" data-description="クリスマスにみんなでパーティーした際の画像">
+                        <img src="images/gallery/14.jpg" alt="Gallery Image 16">
+                    </a>
+                </div>
+                <div class="preview-item" data-theme="cultural">
+                    <a href="#modal-image17" data-title="帰国" data-description="友人の週初奥が決まり帰国する前みんなで集まって遊んだ画像">
+                        <img src="images/gallery/7.jpg" alt="Gallery Image 17">
+                    </a>
+                </div>
+                <div class="preview-item" data-theme="fun">
+                    <a href="#modal-image18" data-title="新宿" data-description="クラブ前でシンプルに飲んでる画像">
+                        <img src="images/gallery/11.jpg" alt="Gallery Image 18">
+                    </a>
+                </div>
+                <div class="preview-item" data-theme="cultural">
+                    <a href="#modal-image19" data-title="誕生日パーティー" data-description="友人の誕生日にした立食パーティーの画像">
+                        <img src="images/gallery/6.jpg" alt="Gallery Image 19">
+                    </a>
+                </div>
+                <div class="preview-item" data-theme="cultural">
+                    <a href="#modal-image20" data-title="肝試し" data-description="友人達と肝試しに行った帰りの画像">
+                        <img src="images/gallery/23.jpg" alt="Gallery Image 20">
+                    </a>
+                </div>
+                <div class="preview-item" data-theme="fun">
+                    <a href="#modal-image21" data-title="ボードゲーム" data-description="友人達とカタンをやっている画像">
+                        <img src="images/gallery/12.jpg" alt="Gallery Image 21">
+                    </a>
+                </div>
+
             </div>
-            
+
             <a href="index.html" class="btn">戻る</a>
         </div>
     </section>
 
-    <div id="modal-image1" class="modal">
-        <span class="close-btn">×</span>
-        <img src="images/gallery/image1.jpg" alt="Gallery Image 1">
-        <div class="modal-caption">
-            <h3>タイトル1</h3>
-            <p>説明文1</p>
+    <!-- 以下、モーダルを21枚追加 (合計21枚) -->
+    <div id="modal-image1" class="modal image-modal">
+        <div class="modal-content">
+            <span class="close-btn" data-target="modal-image1">×</span>
+            <img src="images/gallery/1.jpg" alt="Gallery Image 1">
+            <div class="modal-caption">
+                <h3>ゴミ拾い</h3>
+                <p>八王子で飛び入りでゴミ拾いに参加した時の画像</p>
+            </div>
         </div>
     </div>
-
-    <div id="modal-image2" class="modal">
-        <span class="close-btn">×</span>
-        <img src="images/gallery/image2.jpg" alt="Gallery Image 2">
-        <div class="modal-caption">
-            <h3>タイトル2</h3>
-            <p>説明文2</p>
+    <div id="modal-image2" class="modal image-modal">
+        <div class="modal-content">
+            <span class="close-btn" data-target="modal-image2">×</span>
+            <img src="images/gallery/24.jpg" alt="Gallery Image 2">
+            <div class="modal-caption">
+                <h3>お別れBBQ</h3>
+                <p>友達がフランスに帰国する際にBBQした時の画像
+                </p>
+            </div>
         </div>
     </div>
-
-    <div id="modal-image3" class="modal">
-        <span class="close-btn">×</span>
-        <img src="images/gallery/image3.jpg" alt="Gallery Image 3">
-        <div class="modal-caption">
-            <h3>タイトル3</h3>
-            <p>説明文3</p>
+    <div id="modal-image3" class="modal image-modal">
+        <div class="modal-content">
+            <span class="close-btn" data-target="modal-image3">×</span>
+            <img src="images/gallery/4.jpg" alt="Gallery Image 3">
+            <div class="modal-caption">
+                <h3>飲み</h3>
+                <p>日本語学校に通っている友達と飲んでいる画像</p>
+            </div>
         </div>
     </div>
-    <!-- さらにモーダルを追加 -->
+    <div id="modal-image4" class="modal image-modal">
+        <div class="modal-content">
+            <span class="close-btn" data-target="modal-image4">×</span>
+            <img src="images/gallery/15.jpg" alt="Gallery Image 4">
+            <div class="modal-caption">
+                <h3>お別れ会</h3>
+                <p>友達がカメルーンに帰る際にお別れ会をした時の画像</p>
+            </div>
+        </div>
+    </div>
+    <div id="modal-image5" class="modal image-modal">
+        <div class="modal-content">
+            <span class="close-btn" data-target="modal-image5">×</span>
+            <img src="images/gallery/20.jpg" alt="Gallery Image 5">
+            <div class="modal-caption">
+                <h3>誕生日パーティ</h3>
+                <p>友達の誕生日にパーティをした時の画像</p>
+            </div>
+        </div>
+    </div>
+    <div id="modal-image6" class="modal image-modal">
+        <div class="modal-content">
+            <span class="close-btn" data-target="modal-image6">×</span>
+            <img src="images/gallery/22.jpg" alt="Gallery Image 6">
+            <div class="modal-caption">
+                <h3>飲み</h3>
+                <p>クラブで日本に在住している友達と飲んでいる画像</p>
+            </div>
+        </div>
+    </div>
+    <div id="modal-image7" class="modal image-modal">
+        <div class="modal-content">
+            <span class="close-btn" data-target="modal-image7">×</span>
+            <img src="images/gallery/17.jpg" alt="Gallery Image 7">
+            <div class="modal-caption">
+                <h3>UC Berkeley</h3>
+                <p>アメリカに住んでいた際UC Berkeleyに行った時の画像</p>
+            </div>
+        </div>
+    </div>
+    <div id="modal-image8" class="modal image-modal">
+        <div class="modal-content">
+            <span class="close-btn" data-target="modal-image8">×</span>
+            <img src="images/gallery/8.jpg" alt="Gallery Image 8">
+            <div class="modal-caption">
+                <h3>鰻</h3>
+                <p>みんなで鰻を食べに行った際の画像</p>
+            </div>
+        </div>
+    </div>
+    <div id="modal-image9" class="modal image-modal">
+        <div class="modal-content">
+            <span class="close-btn" data-target="modal-image9">×</span>
+            <img src="images/gallery/2.jpg" alt="Gallery Image 9">
+            <div class="modal-caption">
+                <h3>クラブ</h3>
+                <p>友人とひたすら飲んでいた際の画像</p>
+            </div>
+        </div>
+    </div>
+    <div id="modal-image10" class="modal image-modal">
+        <div class="modal-content">
+            <span class="close-btn" data-target="modal-image10">×</span>
+            <img src="images/gallery/5.jpg" alt="Gallery Image 10">
+            <div class="modal-caption">
+                <h3>観光案内</h3>
+                <p>日本語学校に通っていた友人に東京を案内した時の画像</p>
+            </div>
+        </div>
+    </div>
+    <div id="modal-image11" class="modal image-modal">
+        <div class="modal-content">
+            <span class="close-btn" data-target="modal-image11">×</span>
+            <img src="images/gallery/21.jpg" alt="Gallery Image 11">
+            <div class="modal-caption">
+                <h3>誕生日BBQ</h3>
+                <p>インド人の友人の誕生日に誕生日パーティーをした時の画像</p>
+            </div>
+        </div>
+    </div>
+    <div id="modal-image12" class="modal image-modal">
+        <div class="modal-content">
+            <span class="close-btn" data-target="modal-image12">×</span>
+            <img src="images/gallery/3.jpg" alt="Gallery Image 12">
+            <div class="modal-caption">
+                <h3>行きつけのバー</h3>
+                <p>行きつけのバーで仲良くなった友人と飲んでいる時の画像</p>
+            </div>
+        </div>
+    </div>
+    <div id="modal-image13" class="modal image-modal">
+        <div class="modal-content">
+            <span class="close-btn" data-target="modal-image13">×</span>
+            <img src="images/gallery/9.jpg" alt="Gallery Image 13">
+            <div class="modal-caption">
+                <h3>海</h3>
+                <p>海でハイキングした時の画像</p>
+            </div>
+        </div>
+    </div>
+    <div id="modal-image14" class="modal image-modal">
+        <div class="modal-content">
+            <span class="close-btn" data-target="modal-image14">×</span>
+            <img src="images/gallery/18.jpg" alt="Gallery Image 14">
+            <div class="modal-caption">
+                <h3>ドンキホーテ</h3>
+                <p>ドンキホーテの前の広場でみんなで飲んだ際の画像</p>
+            </div>
+        </div>
+    </div>
+    <div id="modal-image15" class="modal image-modal">
+        <div class="modal-content">
+            <span class="close-btn" data-target="modal-image15">×</span>
+            <img src="images/gallery/19.jpg" alt="Gallery Image 15">
+            <div class="modal-caption">
+                <h3>マイケル</h3>
+                <p>行きつけのバーで仲良くなった韓国人とマイケルと撮った画像</p>
+            </div>
+        </div>
+    </div>
+    <div id="modal-image16" class="modal image-modal">
+        <div class="modal-content">
+            <span class="close-btn" data-target="modal-image16">×</span>
+            <img src="images/gallery/14.jpg" alt="Gallery Image 16">
+            <div class="modal-caption">
+                <h3>クリスマスパーティー</h3>
+                <p>クリスマスにみんなでパーティーした際の画像</p>
+            </div>
+        </div>
+    </div>
+    <div id="modal-image17" class="modal image-modal">
+        <div class="modal-content">
+            <span class="close-btn" data-target="modal-image17">×</span>
+            <img src="images/gallery/7.jpg" alt="Gallery Image 17">
+            <div class="modal-caption">
+                <h3>帰国</h3>
+                <p>友人の週初奥が決まり帰国する前みんなで集まって遊んだ画像</p>
+            </div>
+        </div>
+    </div>
+    <div id="modal-image18" class="modal image-modal">
+        <div class="modal-content">
+            <span class="close-btn" data-target="modal-image18">×</span>
+            <img src="images/gallery/11.jpg" alt="Gallery Image 18">
+            <div class="modal-caption">
+                <h3>新宿</h3>
+                <p>クラブ前でシンプルに飲んでる画像</p>
+            </div>
+        </div>
+    </div>
+    <div id="modal-image19" class="modal image-modal">
+        <div class="modal-content">
+            <span class="close-btn" data-target="modal-image19">×</span>
+            <img src="images/gallery/6.jpg" alt="Gallery Image 19">
+            <div class="modal-caption">
+                <h3>誕生日パーティー</h3>
+                <p>友人の誕生日にした立食パーティーの画像</p>
+            </div>
+        </div>
+    </div>
+    <div id="modal-image20" class="modal image-modal">
+        <div class="modal-content">
+            <span class="close-btn" data-target="modal-image20">×</span>
+            <img src="images/gallery/23.jpg" alt="Gallery Image 20">
+            <div class="modal-caption">
+                <h3>肝試し</h3>
+                <p>友人達と肝試しに行った帰りの画像</p>
+            </div>
+        </div>
+    </div>
+    <div id="modal-image21" class="modal image-modal">
+        <div class="modal-content">
+            <span class="close-btn" data-target="modal-image21">×</span>
+            <img src="images/gallery/12.jpg" alt="Gallery Image 21">
+            <div class="modal-caption">
+                <h3>ボードゲーム</h3>
+                <p>友人達とカタンをやっている画像</p>
+            </div>
+        </div>
+    </div>
 
     <footer>
         <div class="container">

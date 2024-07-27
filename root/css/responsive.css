@@ -42,6 +42,24 @@
     .skills .skill-item {
         width: 45%;
     }
+
+    /* 経験セクション */
+    .experience .experience-items {
+        flex-wrap: wrap;
+    }
+
+    .experience .experience-item {
+        width: 45%;
+    }
+
+    /* About Me セクション */
+    .about-content {
+        width: 50%;
+    }
+
+    .about-image {
+        width: 50%;
+    }
 }
 
 /* デスクトップ（1024px以上） */
@@ -72,6 +90,24 @@
     .skills .skill-item {
         width: 28%;
     }
+
+    /* 経験セクション */
+    .experience .experience-items {
+        flex-wrap: nowrap; /* 横並びを維持 */
+    }
+
+    .experience .experience-item {
+        width: 30%;
+    }
+
+    /* About Me セクション */
+    .about-content {
+        width: 60%;
+    }
+
+    .about-image {
+        width: 40%;
+    }
 }
 
 /* モバイルメニュー */
@@ -83,11 +119,11 @@
     #main-nav {
         display: none;
         position: absolute;
-        top: 80px;
+        top: 100%; /* ヘッダー画像の下に表示 */
         left: 0;
         width: 100%;
-        background-color: #fff;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        background-color: rgba(0, 0, 0, 0.9); /* 背景色を暗く */
+        padding: 20px;
     }
 
     #main-nav ul {
@@ -96,25 +132,48 @@
 
     #main-nav li {
         display: block;
-        margin: 0;
-        padding: 15px 0;
-        border-bottom: 1px solid #eee;
+        margin: 10px 0;
     }
 
     /* ヘッダーのロゴとメニューボタンの位置調整 */
     header .container {
-        position: relative;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    h1 {
+        position: relative; /* 通常の位置に戻す */
+        top: 0;
+        left: 0;
+        transform: none;
+        margin-bottom: 20px;
     }
 
     .language-switcher {
-        position: absolute;
-        top: 50%;
-        right: 20px;
-        transform: translateY(-50%);
+        margin-left: 0;
+        margin-bottom: 20px;
+    }
+
+    /* About Me セクション */
+    .about-content {
+        width: 100%;
+        float: none;
+    }
+
+    .about-image {
+        width: 100%;
+        float: none;
+        text-align: center;
+        margin-top: 30px;
     }
 
     /* スキルセクション */
     .skills .skill-item {
+        width: 90%;
+    }
+
+    /* 経験セクション */
+    .experience .experience-item {
         width: 90%;
     }
 
