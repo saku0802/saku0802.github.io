@@ -315,46 +315,7 @@ footer {
   margin-top: 10px;
 }
 
-.gallery-link {
-  position: relative;
-  margin: 10px;
-  overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
 
-.gallery-link img {
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  transition: all 0.3s ease;
-}
-
-.gallery-link:hover img {
-  transform: scale(1.1);
-}
-
-.gallery-link .overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 0;
-  background-color: rgba(0, 0, 0, 0.6);
-  color: #fff;
-  text-align: center;
-  transition: height 0.3s ease;
-}
-
-.gallery-link:hover .overlay {
-  height: 100%;
-}
-
-.gallery-link .overlay p {
-  font-size: 18px;
-  padding: 10px 0;
-  margin: 0;
-}
 
 /* 画像モーダル */
 .image-modal .modal-content {
@@ -420,3 +381,29 @@ footer {
 }
 
 /* ... (他のスタイル) ... */ 
+/* フィルターボタン */
+.gallery-filter {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.gallery-filter button {
+  margin: 0 5px; /* 左右に5pxの隙間 */
+  padding: 8px 15px; /* ボタンサイズ調整 */
+  background-color: #B22222; /* ケニア国旗の赤 */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.gallery-filter button:hover {
+  background-color: #8B0000; /* より暗い赤 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* ホバー時の影 */
+}
+
+.gallery-filter button.active {
+  background-color: #8B0000; /* アクティブ時の色 */
+}
