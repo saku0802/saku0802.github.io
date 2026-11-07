@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101827">
+<meta name="description" content="ライブキャッシュ向けNLH学習トレーナー">
+<link rel="manifest" href="manifest.webmanifest">
+<title>POKER LAB | NLH Trainer</title>
+<style>
+:root{--bg:#0b1220;--panel:#131f30;--panel2:#19283b;--line:#2b3b50;--text:#edf3fa;--muted:#9aabc0;--green:#3ddc97;--red:#ff7474;--gold:#f4c66a;--blue:#80b7ff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#17283b 0,#0b1220 55%);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}
+button,select{font:inherit}button{cursor:pointer}
+.app{max-width:1100px;margin:auto;padding:18px 16px 50px}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0 22px}
+.brand{font-weight:900;letter-spacing:.12em;font-size:1.25rem}.brand span{color:var(--green)}.sub{color:var(--muted);font-size:.72rem;letter-spacing:.13em;margin-top:3px}
+.pill{border:1px solid #315a4c;color:var(--green);border-radius:999px;padding:6px 10px;font-size:.75rem}
+nav{display:flex;gap:8px;overflow:auto;padding:5px 0 16px;scrollbar-width:none}nav button{white-space:nowrap;border:1px solid var(--line);background:var(--panel);color:var(--muted);padding:10px 14px;border-radius:12px}nav button.active{background:#1c3b36;border-color:#32785f;color:#dffff0}
+main{display:grid;gap:14px}.hero{padding:22px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(130deg,#182d3e,#132333 65%,#18372f)}.eyebrow{color:var(--green);font-size:.72rem;letter-spacing:.14em;font-weight:800}.hero h1{font-size:clamp(1.6rem,5vw,2.5rem);line-height:1.12;margin:9px 0}.hero p{color:#bac8d7;max-width:650px;margin:0}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.stat,.card{background:rgba(19,31,48,.94);border:1px solid var(--line);border-radius:16px;padding:15px}.stat small,.muted{color:var(--muted)}.stat strong{display:block;font-size:1.55rem;margin-top:4px}
+.card h2{font-size:1.05rem;margin:0 0 12px}.row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.primary,.secondary,.choice{border-radius:12px;padding:12px 15px;border:1px solid transparent}.primary{background:var(--green);color:#062318;font-weight:800}.secondary{background:var(--panel2);border-color:var(--line);color:var(--text)}.choice{display:block;width:100%;text-align:left;background:#172538;border-color:#34475f;color:var(--text);margin:8px 0}.choice:disabled{cursor:default;opacity:1}.choice.correct{border-color:var(--green);background:#15372e}.choice.wrong{border-color:var(--red);background:#3a2229}
+.hidden{display:none!important}.progress{height:8px;border-radius:9px;background:#26364a;overflow:hidden}.progress>i{display:block;height:100%;background:var(--green);width:0}
+select{background:#172538;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:10px}
+.rangegrid{display:grid;grid-template-columns:repeat(13,minmax(0,1fr));gap:3px;margin-top:12px}.cell{aspect-ratio:1;border:1px solid #405269;border-radius:5px;background:#172538;color:#dce7f3;font-size:clamp(.48rem,1.7vw,.82rem);padding:0}.cell.selected{outline:2px solid white;outline-offset:1px}.cell.premium{background:#23664f}.cell.strong{background:#315c78}.cell.play{background:#80652f}.cell.fold{background:#273548;color:#8fa0b4}
+.legend{display:flex;gap:10px;flex-wrap:wrap;font-size:.75rem;color:var(--muted);margin-top:10px}.dot{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:4px}
+.feedback{padding:13px;border-radius:12px;background:#1a2b3c;border:1px solid var(--line);margin-top:12px}.feedback.good{border-color:#32785f}.feedback.bad{border-color:#8c444b}
+.tag{display:inline-block;font-size:.72rem;color:var(--blue);border:1px solid #3b5878;padding:4px 8px;border-radius:99px;margin-bottom:8px}
+.note{font-size:.85rem;color:var(--muted);line-height:1.6}.section{display:grid;gap:12px}.lesson-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.lesson{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px}.lesson b{display:block;margin-bottom:5px}
+footer{text-align:center;color:#6f8299;font-size:.75rem;padding:28px 0}
+@media(min-width:760px){main{grid-template-columns:1.1fr .9fr}.wide{grid-column:1/-1}.hero{grid-column:1/-1}.section.two{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.app{padding:12px 11px 35px}.stats{gap:7px}.stat{padding:11px}.stat strong{font-size:1.25rem}.hero{padding:18px}.lesson-list{grid-template-columns:1fr}.rangegrid{gap:2px}.cell{border-radius:3px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header><div><div class="brand">♠ POKER <span>LAB</span></div><div class="sub">LIVE CASH · NLH TRAINING</div></div><div class="pill">LOCAL PROGRESS</div></header>
+<nav id="nav">
+<button class="active" data-page="home">ホーム</button><button data-page="range">レンジ練習</button><button data-page="quiz">実戦クイズ</button><button data-page="review">復習・記録</button><button data-page="guide">学習ガイド</button>
+</nav>
+<main>
+<section id="home" class="section">
+<div class="hero"><div class="eyebrow">REBUILD YOUR EDGE</div><h1>ライブキャッシュで<br>勝つための感覚を取り戻す。</h1><p>9人卓を基礎に、6-maxにも対応。レンジ・判断・復習をひとつの場所で練習するNLHトレーナー。</p></div>
+<div class="stats wide">
+<div class="stat"><small>クイズ回答数</small><strong id="statAnswered">0</strong></div>
+<div class="stat"><small>正答率</small><strong id="statAccuracy">—</strong></div>
+<div class="stat"><small>連続正解</small><strong id="statStreak">0</strong></div>
+</div>
+<div class="card"><h2>今日のトレーニング</h2><div class="row"><div><b>プリフロップ判断</b><div class="note">ポジションとハンドの強さを確認</div></div><button class="primary" onclick="go('quiz')">練習する →</button></div><div class="progress" style="margin-top:15px"><i id="homeProgress"></i></div><div class="note" id="progressText">まずは5問解いてみよう。</div></div>
+<div class="card"><h2>学習ルート</h2><div class="lesson-list"><div class="lesson"><b>01 · プリフロップ</b><span class="note">レンジ、ポジション、オープン、3ベット</span></div><div class="lesson"><b>02 · フロップ</b><span class="note">ボード相性、CB、ベットサイズ</span></div><div class="lesson"><b>03 · ターン・リバー</b><span class="note">バレル、ブラフキャッチ、バリュー</span></div><div class="lesson"><b>04 · ライブ攻略</b><span class="note">相手タイプ、テル、テーブル選び</span></div></div></div>
+</section>
+<section id="range" class="section hidden">
+<div class="card wide"><div class="row"><div><div class="eyebrow">RANGE TRAINER</div><h2 style="margin:5px 0">スターティングハンド表</h2></div><select id="position"><option>UTG</option><option>MP</option><option>CO</option><option>BTN</option><option>SB</option><option>BB</option></select></div>
+<p class="note">13×13の169コンボ分類。色は学習用の暫定カテゴリです。実戦の正解レンジは人数・レーキ・スタック・オープンサイズ・相手によって変わります。</p>
+<div class="legend"><span><i class="dot" style="background:#23664f"></i>強い候補</span><span><i class="dot" style="background:#315c78"></i>候補</span><span><i class="dot" style="background:#80652f"></i>条件付き</span><span><i class="dot" style="background:#273548"></i>基本フォールド</span></div>
+<div id="rangegrid" class="rangegrid"></div><div id="rangeInfo" class="feedback">マスをタップするとハンドの説明が表示されます。</div>
+</div>
+<div class="card"><h2>レンジの読み方</h2><p class="note">対角線はポケットペア。対角線より上はスーテッド、下はオフスート。たとえばAKsはスーテッド、AKoはオフスート。</p><p class="note">この初期版の色分けは暗記用の概略です。厳密なGTOチャートではありません。実際の学習では、使用するライブゲームの条件に合わせたレンジ表へ更新します。</p></div>
+</section>
+<section id="quiz" class="section hidden">
+<div class="card wide"><div class="eyebrow">SPOT TRAINER</div><div class="row"><h2>実戦判断クイズ</h2><span class="tag" id="qCount">1問目</span></div>
+<div class="row"><label class="note">テーブル</label><select id="tableType"><option value="9">9人卓</option><option value="6">6人卓</option></select><label class="note">スタック</label><select id="stack"><option>100BB</option><option>150BB</option><option>50BB</option></select></div>
+<div style="margin-top:16px"><div class="tag" id="qTag">プリフロップ</div><h2 id="qTitle">問題を読み込んでいます</h2><p class="note" id="qScenario"></p><div id="choices"></div><div id="qFeedback"></div></div>
+<div class="row" style="margin-top:15px"><button class="secondary" onclick="resetQuiz()">最初から</button><button class="primary" id="nextQ" disabled onclick="nextQuestion()">次の問題 →</button></div>
+</div>
+<div class="card"><h2>判断のポイント</h2><p class="note">まず自分のアクションを選ぶ。その後、解説で「標準的な考え方」と「ライブで調整するポイント」を確認しよう。</p></div>
+</section>
+<section id="review" class="section hidden">
+<div class="card wide"><div class="row"><h2>学習記録</h2><button class="secondary" onclick="clearProgress()">記録をリセット</button></div><div class="stats"><div class="stat"><small>回答数</small><strong id="revAnswered">0</strong></div><div class="stat"><small>正解</small><strong id="revCorrect">0</strong></div><div class="stat"><small>正答率</small><strong id="revAccuracy">—</strong></div></div><h2 style="margin-top:20px">最近の回答</h2><div id="history" class="note">まだ記録がありません。</div></div>
+</section>
+<section id="guide" class="section hidden">
+<div class="card wide"><div class="eyebrow">STUDY GUIDE</div><h2>ライブキャッシュ向け学習順</h2>
+<div class="lesson-list">
+<div class="lesson"><b>1. プリフロップの土台</b><span class="note">9人卓のUTG〜BB、オープン、対オープンの対応。まずここを固める。</span></div>
+<div class="lesson"><b>2. ポストフロップ</b><span class="note">レンジ優位・ナッツ優位、CB頻度、ベットサイズ、チェックの使い分け。</span></div>
+<div class="lesson"><b>3. ポットオッズとエクイティ</b><span class="note">必要勝率、アウト、実現エクイティを計算できるようにする。</span></div>
+<div class="lesson"><b>4. ライブ特有の調整</b><span class="note">コーラーへの薄いバリュー、受動的な相手へのブラフ頻度調整、観察メモ。</span></div>
+</div><p class="note">重要：ライブの傾向は相手や店舗によって違う。固定観念で決めつけず、観察した情報から調整する。</p></div>
+</section>
+</main>
+<footer>POKER LAB · MVP 0.1 · 学習用ツール / 実戦の勝利を保証するものではありません</footer>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const KEY='pokerLabProgressV1';
+let state=loadState(), qIndex=0, answered=false, streak=0;
+function loadState(){try{return JSON.parse(localStorage.getItem(KEY))||{answered:0,correct:0,streak:0,history:[]}}catch(e){return {answered:0,correct:0,streak:0,history:[]}}}
+function save(){localStorage.setItem(KEY,JSON.stringify(state));renderStats()}
+function renderStats(){
+ const acc=state.answered?Math.round(state.correct/state.answered*100)+'%':'—';
+ ['statAnswered','revAnswered'].forEach(id=>$(id).textContent=state.answered);
+ ['statAccuracy','revAccuracy'].forEach(id=>$(id).textContent=acc);
+ $('statStreak').textContent=state.streak;
+ $('revCorrect').textContent=state.correct;
+ $('homeProgress').style.width=Math.min(100,state.answered/5*100)+'%';
+ $('progressText').textContent=state.answered>=5?'いいペース。次は苦手なスポットを重点復習しよう。':`まずは5問解いてみよう（${state.answered}/5問）。`;
+ $('history').innerHTML=state.history.length?state.history.slice(0,12).map(x=>`<div style="padding:9px 0;border-bottom:1px solid #2b3b50"><b style="color:${x.ok?'var(--green)':'var(--red)'}">${x.ok?'正解':'不正解'}</b> · ${esc(x.title)} <span style="float:right;color:var(--muted)">${esc(x.date)}</span></div>`).join(''):'まだ記録がありません。';
+}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function go(page){document.querySelectorAll('main>section').forEach(s=>s.classList.add('hidden'));$(page).classList.remove('hidden');document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===page));if(page==='range')buildRange();if(page==='quiz'&&!$('qTitle').dataset.ready)renderQuestion();if(page==='review')renderStats();window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>go(b.dataset.page)));
+const ranks='AKQJT98765432'.split('');
+function handName(r,c){if(r===c)return ranks[r]+ranks[c];return ranks[Math.min(r,c)]+ranks[Math.max(r,c)]+(r<c?'s':'o')}
+function classify(hand,pos){
+ const pair=hand.length===2, a=hand[0],b=hand[1],su=hand.endsWith('s');
+ if(pair){let v=ranks.indexOf(a);if(v<=4)return 'premium';if(v<=7)return 'strong';if(v<=9)return 'play';return pos==='UTG'?'fold':'play'}
+ if(a==='A'&&'KQJT'.includes(b))return 'premium';
+ if(a==='A'&&'987654'.includes(b)&&su)return pos==='UTG'?'strong':'play';
+ if(a==='K'&&'QJT'.includes(b)&&su)return 'strong';
+ if(a==='Q'&&'JT'.includes(b)&&su)return 'strong';
+ if(su&&('AKQJT'.includes(a))&&('987654'.includes(b)))return pos==='UTG'?'fold':'play';
+ if(!su&&a==='A'&&'KQJ'.includes(b))return 'strong';
+ if(!su&&a==='A'&&b==='T')return pos==='BTN'||pos==='CO'?'play':'fold';
+ return 'fold'
+}
+function buildRange(){
+ const pos=$('position').value,g=$('rangegrid');g.innerHTML='';
+ ranks.forEach((r,i)=>ranks.forEach((c,j)=>{
+  let h=handName(i,j),cat=classify(h,pos),btn=document.createElement('button');btn.className='cell '+cat;btn.textContent=h;btn.onclick=()=>{document.querySelectorAll('.cell').forEach(x=>x.classList.remove('selected'));btn.classList.add('selected');$('rangeInfo').innerHTML=`<b>${h}</b> · ${catLabel(cat)}<br><span class="note">${rangeExplain(h,cat,pos)}</span>`};g.appendChild(btn);
+ }));
+}
+function catLabel(c){return {premium:'強い候補',strong:'候補',play:'条件付き',fold:'基本フォールド'}[c]}
+function rangeExplain(h,c,p){return `${p}の学習用分類。実際の参加判断はオープンサイズ、後ろのプレイヤー、レーキ、相手の傾向、テーブル状況で変わります。これは厳密なGTOレンジではありません。`}
+$('position').addEventListener('change',buildRange);
+const questions=[
+{tag:'9人卓 · UTG · 100BB',title:'A♠ A♦ が配られた。全員フォールドで自分の番。',scenario:'まだ誰も参加していない。最も標準的なアクションは？',opts:['フォールド','リンプ','オープンレイズ'],ans:2,why:'AAは最上位のバリューハンド。通常はオープンレイズしてポットを作り、弱いハンドからコールを得る。リンプで参加する理由は通常ない。',live:'ライブでコールが多い卓なら、標準より大きめのオープンサイズでバリューを取りやすい。ただしサイズはテーブルの実際の傾向に合わせる。'},
+{tag:'9人卓 · UTG · 100BB',title:'7♣ 2♦（72o）が配られた。',scenario:'全員フォールドで自分の番。どうする？',opts:['オープンレイズ','フォールド','リンプ'],ans:1,why:'72oは弱く、UTGでは後ろに多くのプレイヤーが残る。支配されやすく、ポストフロップで難しい状況になりやすいので基本フォールド。',live:'「安いから参加」は避ける。参加後のポジションと実現エクイティまで考える。'},
+{tag:'9人卓 · BTN · 100BB',title:'BTNで A♣ 8♣。全員フォールドで自分の番。',scenario:'ブラインドは平均的で、極端にアグレッシブではない。',opts:['基本フォールド','オープンレイズ','必ずリンプ'],ans:1,why:'BTNはポストフロップで最後に行動できるため、UTGより広いレンジでオープンできる。A8sは一般にオープン候補。',live:'SB・BBが非常に強く3ベットしてくるなら調整。逆にブラインドが受け身ならスチール価値が上がる。'},
+{tag:'9人卓 · CO · 100BB',title:'COで K♦ Q♦。前のプレイヤーは全員フォールド。',scenario:'後ろにBTN・SB・BBが残っている。',opts:['オープンレイズ','フォールド','コール'],ans:0,why:'KQsは強いスーテッドブロードウェイで、COからの標準的なオープン候補。',live:'後ろに3ベットの多いプレイヤーがいる場合は、オープン後の対応も先に考えておく。'},
+{tag:'9人卓 · BB · 100BB',title:'BTNがオープンレイズ。自分はBBで 8♠ 6♠。',scenario:'BTNは広めにオープンする標準的なプレイヤー。追加で必要なコール額は小さめ。',opts:['常にフォールド','状況次第でディフェンス','必ず3ベット'],ans:1,why:'BBはすでにブラインドを投入しており、他のポジションより広くディフェンスできる。86sはサイズや相手次第でコール候補。',live:'ライブではオープンサイズが大きいことも多い。サイズが大きいほどディフェンスレンジを締める。'},
+{tag:'6-max · BTN · 100BB',title:'6-maxのBTNで Q♥ 9♥。全員フォールド。',scenario:'SB・BBは平均的なプレイヤー。',opts:['オープンレイズ候補','必ずフォールド','必ずリンプ'],ans:0,why:'6-maxでは9人卓より全体的にレンジが広くなる。Q9sはBTNからのオープン候補。',live:'9人卓用のレンジをそのまま6-maxに持ち込まない。人数が減るほど前のポジションの範囲も広がる。'}
+];
+function renderQuestion(){
+ let q=questions[qIndex%questions.length];$('qTitle').textContent=q.title;$('qTag').textContent=q.tag;$('qScenario').textContent=q.scenario;$('qCount').textContent=`${qIndex+1}問目`;
+ $('choices').innerHTML='';$('qFeedback').innerHTML='';$('nextQ').disabled=true;answered=false;
+ q.opts.forEach((o,i)=>{let b=document.createElement('button');b.className='choice';b.textContent=o;b.onclick=()=>grade(i);$('choices').appendChild(b)});
+ $('qTitle').dataset.ready='1';
+}
+function grade(i){
+ if(answered)return;answered=true;let q=questions[qIndex%questions.length],ok=i===q.ans;
+ [...$('choices').children].forEach((b,n)=>{b.disabled=true;if(n===q.ans)b.classList.add('correct');if(n===i&&!ok)b.classList.add('wrong')});
+ state.answered++;if(ok){state.correct++;state.streak++}else state.streak=0;
+ state.history.unshift({ok,title:q.title,date:new Date().toLocaleDateString('ja-JP')});state.history=state.history.slice(0,50);save();
+ $('qFeedback').innerHTML=`<div class="feedback ${ok?'good':'bad'}"><b style="color:${ok?'var(--green)':'var(--red)'}">${ok?'正解':'不正解'}</b><p><b>基本戦略：</b>${q.why}</p><p><b>ライブでの調整：</b>${q.live}</p></div>`;$('nextQ').disabled=false;
+}
+function nextQuestion(){qIndex=(qIndex+1)%questions.length;renderQuestion()}
+function resetQuiz(){qIndex=0;renderQuestion()}
+function clearProgress(){if(confirm('学習記録をすべて削除しますか？')){state={answered:0,correct:0,streak:0,history:[]};save()}}
+buildRange();renderStats();renderQuestion();
+if('serviceWorker'in navigator && location.protocol.startsWith('http'))window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+</script>
+</body></html>
