@@ -60,6 +60,8 @@ footer{text-align:center;color:#6f8299;font-size:.75rem;padding:28px 0}
 <section id="quiz" class="section hidden">
 <div class="card wide"><div class="eyebrow">SPOT TRAINER</div><div class="row"><h2>実戦判断クイズ</h2><span class="tag" id="qCount">1問目</span></div>
 <div class="row"><label class="note">テーブル</label><select id="tableType"><option value="9">9人卓</option><option value="6">6人卓</option></select><label class="note">スタック</label><select id="stack"><option>100BB（基準）</option></select></div>
+<div class="row" style="margin-top:10px"><button class="secondary" id="strategyMode" onclick="setQuizMode('strategy')">戦略ドリル（27問）</button><button class="secondary" id="solverMode" onclick="setQuizMode('solver')">ソルバー頻度ドリル</button></div>
+<p class="note" id="modeNote">戦略ドリルは考え方を学ぶ練習。ソルバー頻度ドリルでは公開された100BBキャッシュのプリフロップ混合頻度を使い、ランダムに大量出題します。</p>
 <div style="margin-top:16px"><div class="tag" id="qTag">プリフロップ</div><h2 id="qTitle">問題を読み込んでいます</h2><p class="note" id="qScenario"></p><div id="choices"></div><div id="qFeedback"></div></div>
 <div class="row" style="margin-top:15px"><button class="secondary" onclick="resetQuiz()">最初から</button><button class="primary" id="nextQ" disabled onclick="nextQuestion()">次の問題 →</button></div>
 </div>
@@ -78,12 +80,12 @@ footer{text-align:center;color:#6f8299;font-size:.75rem;padding:28px 0}
 </div><p class="note">重要：ライブの傾向は相手や店舗によって違う。固定観念で決めつけず、観察した情報から調整する。</p></div>
 </section>
 </main>
-<footer>POKER LAB · MVP 0.3 · 学習用ツール / 実戦の勝利を保証するものではありません</footer>
+<footer>POKER LAB · MVP 0.4 · 学習用ツール / 実戦の勝利を保証するものではありません</footer>
 </div>
 <script>
 const $=id=>document.getElementById(id);
 const KEY='pokerLabProgressV1';
-let state=loadState(), qIndex=0, answered=false, streak=0;
+let state=loadState(), qIndex=0, answered=false, streak=0, quizMode="strategy", solverData=null, solverDeck=[], solverCurrent=null;
 function loadState(){try{return JSON.parse(localStorage.getItem(KEY))||{answered:0,correct:0,streak:0,history:[]}}catch(e){return {answered:0,correct:0,streak:0,history:[]}}}
 function save(){localStorage.setItem(KEY,JSON.stringify(state));renderStats()}
 function renderStats(){
@@ -146,11 +148,13 @@ const questions=[
 {tag:'RIVER · CHECK BACK',title:'あなたは K♠ Q♠。ボード A♦ J♣ 8♥ 4♠ 2♣。',scenario:'BTN対BB。リバーでBBチェック。あなたはKハイ、ドロー不成立。',opts:['チェック','ポットの25%','ポットの75%','オールイン'],ans:0,why:'ショーダウンで勝てる可能性が低く、相手のコールレンジを降ろせる材料も乏しい。チェックで損失を止める。',compare:'小さなベットも相手の弱いペアにコールされやすい。大きなブラフはリスクに見合わない。',live:'相手が過剰フォールドすると確認できた場合のみブラフ頻度を増やす。'}
 ];
 function renderQuestion(){
+ if(quizMode==="solver"){renderSolverQuestion();return;}
  let q=questions[qIndex%questions.length];$('qTitle').textContent=q.title;$('qTag').textContent=q.tag;$('qScenario').textContent=q.scenario;$('qCount').textContent=`${qIndex+1} / ${questions.length}問`;
  $('choices').innerHTML='';$('qFeedback').innerHTML='';$('nextQ').disabled=true;answered=false;
  q.opts.forEach((o,i)=>{let b=document.createElement('button');b.className='choice';b.textContent=o;b.onclick=()=>grade(i);$('choices').appendChild(b)});
 }
 function grade(i){
+ if(quizMode==="solver"){gradeSolver(i);return;}
  if(answered)return;answered=true;let q=questions[qIndex%questions.length],ok=i===q.ans;
  [...$('choices').children].forEach((b,n)=>{b.disabled=true;if(n===q.ans)b.classList.add('correct');if(n===i&&!ok)b.classList.add('wrong')});
  state.answered++;if(ok){state.correct++;state.streak++}else state.streak=0;
@@ -158,8 +162,84 @@ function grade(i){
  $('qFeedback').innerHTML=`<div class="feedback ${ok?'good':'bad'}"><b style="color:${ok?'var(--green)':'var(--red)'}">${ok?'推奨アクション':'別の選択肢がより有力'}</b><p><b>基本戦略：</b>${q.why}</p><p><b>他の選択肢との差：</b>${q.compare}</p><p><b>ライブ調整：</b>${q.live}</p><p class="note">※この問題は学習用の戦略判断です。ソルバーの正確な混合頻度・EV差を表示しているものではありません。</p></div>`;
  $('nextQ').disabled=false;
 }
-function nextQuestion(){qIndex=(qIndex+1)%questions.length;renderQuestion()}
-function resetQuiz(){qIndex=0;renderQuestion()}
+function nextQuestion(){if(quizMode==="solver"){qIndex++;if(qIndex>=solverDeck.length){qIndex=0;shuffleSolverDeck();}renderQuestion();return;}qIndex=(qIndex+1)%questions.length;renderQuestion()}
+function resetQuiz(){qIndex=0;if(quizMode==="solver")shuffleSolverDeck();renderQuestion()}
+
+function setQuizMode(mode){
+ quizMode=mode;qIndex=0;answered=false;
+ $('strategyMode').classList.toggle('primary',mode==='strategy');
+ $('solverMode').classList.toggle('primary',mode==='solver');
+ $('strategyMode').classList.toggle('secondary',mode!=='strategy');
+ $('solverMode').classList.toggle('secondary',mode!=='solver');
+ $('modeNote').textContent=mode==='solver'
+ ?'公開ソルバーの100BBキャッシュ・プリフロップ頻度を使用。ここで表示するのはアクション頻度であり、EV数値ではありません。'
+ :'戦略ドリルは考え方を学ぶ練習。選択肢の優劣を考え、解説で理由を確認します。';
+ if(mode==='solver'&&!solverData){$('qTitle').textContent='ソルバーデータを読み込み中…';$('choices').innerHTML='';$('qFeedback').innerHTML='';loadSolverData();return;}
+ if(mode==='solver')buildSolverDeck();
+ renderQuestion();
+}
+async function loadSolverData(){
+ try{
+  const response=await fetch('./data/cash-100-gto.json');
+  if(!response.ok)throw new Error('HTTP '+response.status);
+  solverData=await response.json();
+  buildSolverDeck();renderQuestion();
+ }catch(e){
+  $('qTitle').textContent='データを読み込めませんでした';
+  $('qScenario').textContent='ページを再読み込みしてください。';
+  $('qFeedback').innerHTML='<div class="feedback bad">ソルバー頻度データの読み込みに失敗しました。</div>';
+ }
+}
+const solverPositionNames={OpenEP1:'UTG',OpenEP2:'UTG+1',OpenEP3:'UTG+2',OpenLJ:'LJ',OpenHJ:'HJ',OpenCO:'CO',OpenBTN:'BTN',OpenSB:'SB'};
+function buildSolverDeck(){
+ if(!solverData)return;
+ const is9=$('tableType').value==='9';
+ const keys=is9?['OpenEP1','OpenEP2','OpenEP3','OpenLJ','OpenHJ','OpenCO','OpenBTN','OpenSB']:['OpenLJ','OpenHJ','OpenCO','OpenBTN','OpenSB'];
+ solverDeck=[];
+ keys.forEach(key=>{
+  const range=solverData.scenarios[key]||{};
+  Object.keys(range).forEach(hand=>solverDeck.push({key,hand,raise:range[hand]||0,limp:key==='OpenSB'?((solverData.scenarios.LimpSB||{})[hand]||0):0}));
+ });
+ shuffleSolverDeck();qIndex=0;
+}
+function shuffleSolverDeck(){
+ for(let i=solverDeck.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[solverDeck[i],solverDeck[j]]=[solverDeck[j],solverDeck[i]];}
+}
+function solverOptions(freq){
+ const correct=Math.max(0,Math.min(100,Math.round(freq*20)*5));
+ const candidates=[correct,correct-10,correct+10,correct-20,correct+20,correct-30,correct+30,correct-40,correct+40].map(v=>Math.max(0,Math.min(100,v)));
+ const unique=[...new Set(candidates)].slice(0,4);
+ while(unique.length<4){const v=Math.max(0,Math.min(100,correct+(unique.length*5)));if(!unique.includes(v))unique.push(v);else unique.push(Math.max(0,correct-unique.length*5));}
+ for(let i=unique.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[unique[i],unique[j]]=[unique[j],unique[i]];}
+ return {correct,options:unique};
+}
+function renderSolverQuestion(){
+ if(!solverData){loadSolverData();return;}
+ if(!solverDeck.length)buildSolverDeck();
+ const spot=solverDeck[qIndex%solverDeck.length],meta=solverOptions(spot.raise);
+ solverCurrent={...spot,correct:meta.correct,options:meta.options};
+ const pos=solverPositionNames[spot.key]||spot.key,table=$('tableType').value==='9'?'9人卓':'6人卓';
+ const raiseSize=spot.key==='OpenSB'?'3.0BB':'2.5BB';
+ $('qTag').textContent='SOLVER DATA · '+table+' · '+pos;
+ $('qTitle').textContent=pos+'からのオープン：'+spot.hand;
+ $('qScenario').textContent='100BBキャッシュ。全員フォールドであなたの番。'+raiseSize+'オープンを採用した公開ソルバーのレンジです。「レイズ頻度」に最も近い数値を選んでください。';
+ $('qCount').textContent=(qIndex+1)+' / '+solverDeck.length+'スポット';
+ $('choices').innerHTML='';$('qFeedback').innerHTML='';$('nextQ').disabled=true;answered=false;
+ meta.options.forEach((v,i)=>{const b=document.createElement('button');b.className='choice';b.textContent='レイズ頻度 '+v+'%';b.onclick=()=>gradeSolver(i);$('choices').appendChild(b);});
+}
+function gradeSolver(i){
+ if(answered||!solverCurrent)return;answered=true;
+ const chosen=solverCurrent.options[i],exact=solverCurrent.raise*100,correct=solverCurrent.correct,ok=chosen===correct;
+ [...$('choices').children].forEach((b,n)=>{b.disabled=true;if(solverCurrent.options[n]===correct)b.classList.add('correct');if(n===i&&!ok)b.classList.add('wrong')});
+ state.answered++;if(ok){state.correct++;state.streak++}else state.streak=0;
+ const title=solverPositionNames[solverCurrent.key]+' '+solverCurrent.hand+' · レイズ頻度 '+exact.toFixed(1)+'%';
+ state.history.unshift({ok,title,date:new Date().toLocaleDateString('ja-JP')});state.history=state.history.slice(0,50);save();
+ const limp=solverCurrent.limp*100,fold=Math.max(0,100-exact-limp),raiseSize=solverCurrent.key==='OpenSB'?'3.0BB':'2.5BB';
+ $('qFeedback').innerHTML='<div class="feedback '+(ok?'good':'bad')+'"><b style="color:'+(ok?'var(--green)':'var(--red)')+'">'+(ok?'頻度を捉えられた':'頻度にズレがあった')+'</b><p><b>ソルバー頻度：</b>レイズ '+exact.toFixed(1)+'%（'+raiseSize+'）'+(solverCurrent.key==='OpenSB'?' · リンプ '+limp.toFixed(1)+'% · フォールド '+fold.toFixed(1)+'%':' · フォールド '+(100-exact).toFixed(1)+'%')+'</p><p><b>あなたの回答：</b>'+chosen+'% · 実際の頻度との差 '+Math.abs(chosen-exact).toFixed(1)+'ポイント</p><p class="note">これは公開データに含まれるアクション頻度です。各アクションのEVやEV損失ではありません。頻度の近似誤差で採点しています。</p></div>';
+ $('nextQ').disabled=false;
+}
+$('tableType').addEventListener('change',()=>{if(quizMode==='solver'&&solverData){buildSolverDeck();renderQuestion();}});
+
 function clearProgress(){if(confirm('学習記録をすべて削除しますか？')){state={answered:0,correct:0,streak:0,history:[]};save()}}
 buildRange();renderStats();renderQuestion();
 if('serviceWorker'in navigator && location.protocol.startsWith('http'))window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
