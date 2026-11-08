@@ -60,8 +60,8 @@ footer{text-align:center;color:#6f8299;font-size:.75rem;padding:28px 0}
 <section id="quiz" class="section hidden">
 <div class="card wide"><div class="eyebrow">SPOT TRAINER</div><div class="row"><h2>実戦判断クイズ</h2><span class="tag" id="qCount">1問目</span></div>
 <div class="row"><label class="note">テーブル</label><select id="tableType"><option value="9">9人卓</option><option value="6">6人卓</option></select><label class="note">スタック</label><select id="stack"><option>100BB（基準）</option></select></div>
-<div class="row" style="margin-top:10px"><button class="secondary" id="strategyMode" onclick="setQuizMode('strategy')">戦略ドリル（27問）</button><button class="secondary" id="solverMode" onclick="setQuizMode('solver')">ソルバー頻度ドリル</button></div>
-<p class="note" id="modeNote">戦略ドリルは考え方を学ぶ練習。ソルバー頻度ドリルでは公開された100BBキャッシュのプリフロップ混合頻度を使い、ランダムに大量出題します。</p>
+<div class="row" style="margin-top:10px"><button class="primary" id="strategyMode" onclick="setQuizMode('strategy')">戦略ドリル（27問）</button><button class="secondary" id="solverMode" onclick="setQuizMode('solver')">ソルバー頻度ドリル</button></div>
+<p class="note" id="modeNote">戦略ドリルは考え方を学ぶ練習。ソルバー頻度ドリルでは公開された100BBキャッシュのプリフロップ混合頻度を使い、ランダムに大量出題します。</p><p class="note">ソルバーデータ出典：<a href="https://github.com/jensbaagaard/poker-practice" target="_blank" rel="noopener">jensbaagaard/poker-practice</a>（MIT）。100BB・アンティなし・通常オープン2.5BB（SB 3BB）。元データにレーキ条件と各アクションのEVは含まれていません。</p>
 <div style="margin-top:16px"><div class="tag" id="qTag">プリフロップ</div><h2 id="qTitle">問題を読み込んでいます</h2><p class="note" id="qScenario"></p><div id="choices"></div><div id="qFeedback"></div></div>
 <div class="row" style="margin-top:15px"><button class="secondary" onclick="resetQuiz()">最初から</button><button class="primary" id="nextQ" disabled onclick="nextQuestion()">次の問題 →</button></div>
 </div>
